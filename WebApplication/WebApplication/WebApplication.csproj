@@ -6,6 +6,7 @@
 
   <ItemGroup>
 	  <PackageReference Include="MailKit" Version="2.11.1" />
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
 	  <PackageReference Include="MimeKit" Version="2.11.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
@@ -17,6 +18,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Accounts\Controllers\" />
+    <Folder Include="Areas\Accounts\Data\" />
+    <Folder Include="Areas\Accounts\Models\" />
+    <Folder Include="Areas\Accounts\Views\" />
   </ItemGroup>
 
 </Project>
