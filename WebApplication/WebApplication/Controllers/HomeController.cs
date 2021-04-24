@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
 
         public IActionResult Index()
         {
-            var data = _context.Users.ToList();
+            //var data = _context.Users.ToList();
             return View();
         }
 
