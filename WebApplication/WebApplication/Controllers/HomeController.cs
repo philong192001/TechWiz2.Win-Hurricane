@@ -11,15 +11,18 @@ namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private MyDBContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MyDBContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            var data = _context.Users.ToList();
             return View();
         }
 
