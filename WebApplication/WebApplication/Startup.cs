@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.Models;
+using WebApplication.Services.Mail;
 
 namespace WebApplication
 {
@@ -26,6 +27,7 @@ namespace WebApplication
         {
             services.AddControllersWithViews();
             services.AddSingleton<MyDBContext>();
+            services.AddTransient<IEmailSender, SendMailService > ();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
