@@ -50,7 +50,7 @@ namespace WebApplication.Areas.Accounts.Controllers
                             return RedirectToAction("Index", "Home", new { area = "Admin" });
                     }
                     else ModelState.AddModelError("", "Login failed. Account does not exist");
-                    return View(nameof(Login));
+                    return View();
                 }
                 else ModelState.AddModelError("", "Login failed. Please enter user and password");
 
@@ -96,7 +96,7 @@ namespace WebApplication.Areas.Accounts.Controllers
                         _emailSender.Seed(user.Email, user.FirstName + " " + user.LastName, "Feed back", "<h1>Thank you for joining us</h1>");
                         var query = _context.Users.Where(x => (x.UserName == model.user_name && x.Password == model.password)).First();
                         HttpContext.Session.SetInt32("id_user", query.Id);
-                        return RedirectToAction("Login", "Accounts", new { area = "Account" });
+                        return RedirectToAction("Login", "Account", new { area = "Accounts" });
                     }
                     else ModelState.AddModelError("", "Registration failed, this account has already registered before measuring");
                 }
@@ -107,7 +107,7 @@ namespace WebApplication.Areas.Accounts.Controllers
                 TempData["Message"] = "Implementation failed. There was a system problem";
             }
             //_emailSender.SendEmailAsync("truongthanhtu.it.1998@gmail.com", "Feed back", "<h1>Thank you for joining us</h1>");
-            return RedirectToAction("Login","Accounts/Account");
+            return RedirectToAction("Login", "Accounts/Account");
         }
 
         public IActionResult Logout()

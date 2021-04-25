@@ -257,7 +257,7 @@ body {
 /*/////////////// FONT STYLES ////////////////////*/
 
 .content-w3ls {
-    max-width: 80%;
+    max-width: 750px;
     margin: 6em auto;
 }
 ul.links-unordered-list li.active a {
