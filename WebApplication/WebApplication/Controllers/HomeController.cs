@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -31,6 +33,10 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index([Bind] Booking booking)
         {
+            booking.IdUser = HttpContext.Session.GetInt32("id_user");
+            booking.Distance = 100;
+            booking.Amount = 100000;
+            booking.Status = 0;
             if (ModelState.IsValid)
             {
                 _context.Booking.Add(booking);

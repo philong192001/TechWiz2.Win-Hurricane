@@ -67,6 +67,8 @@ namespace WebApplication
                     name: "MyAreaAccount",
                     areaName: "Accounts",
                     pattern: "Accounts/{controller=Account}/{action=Login}");
+
+               
             });
         }
     }

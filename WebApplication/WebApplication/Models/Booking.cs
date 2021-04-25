@@ -19,7 +19,7 @@ namespace WebApplication.Models
         public int? Distance { get; set; }
         public decimal? Amount { get; set; }
         public int? Status { get; set; }
-        public int? Member { get; set; }
+        public int Member { get; set; }
         public int? IsCancel { get; set; }
 
         public virtual Driver IdDriverNavigation { get; set; }

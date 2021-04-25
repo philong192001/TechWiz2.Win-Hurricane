@@ -400,7 +400,7 @@
                                                 <div class="col-sm-12 col-md-10 col-md-offset-1">
 
                                                     <div class="form-search dark">
-                                                        <form action="#">
+                                                        <form asp-for="Index" method="post">
                                                             <div class="form-title">
                                                                 <i class="fa fa-globe"></i>
                                                                 <h2>Search for Cheap Rental Cars Wherever Your Are</h2>
@@ -411,28 +411,28 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
+                                                                            <input name="StartTo" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
+                                                                            <input name="EndFrom" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Picking Up Date</label>
-                                                                            <input type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
+                                                                            <input name="Date" type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
                                                                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Member</label>
-                                                                            <input type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
+                                                                            <input name="Member" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
                                                                             <span class="form-control-icon"><i class="fa fa-user"></i></span>
                                                                         </div>
                                                                     </div>
@@ -470,10 +470,10 @@
                                         <div class="caption-content">
                                             <!-- Search form -->
                                             <div class="form-search light">
-                                                <form action="#">
+                                                <form  method="post">
                                                     <div class="form-title">
                                                         <i class="fa fa-globe"></i>
-                                                        <h2>Search for Cheap Rental Cars Wherever Your Are</h2>
+                                                        <h2>Booking for Cheap Rental Cars Wherever Your Are</h2>
                                                     </div>
 
                                                     <div class="row row-inputs">
@@ -481,14 +481,14 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-group has-icon has-label">
                                                                     <label for="formSearchUpLocation2">Picking Up Location</label>
-                                                                    <input type="text" class="form-control" id="formSearchUpLocation2" placeholder="Airport or Anywhere">
+                                                                    <input  type="text" name="StartTo" class="form-control" id="formSearchUpLocation2" placeholder="Airport or Anywhere">
                                                                     <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
                                                                 <div class="form-group has-icon has-label">
                                                                     <label for="formSearchOffLocation2">Dropping Off Location</label>
-                                                                    <input type="text" class="form-control" id="formSearchOffLocation2" placeholder="Airport or Anywhere">
+                                                                    <input type="text" name="EndFrom" class="form-control" id="formSearchOffLocation2" placeholder="Airport or Anywhere">
                                                                     <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                                 </div>
                                                             </div>
@@ -500,7 +500,7 @@
                                                             <div class="col-sm-7">
                                                                 <div class="form-group has-icon has-label">
                                                                     <label for="formSearchUpDate2">Picking Up Date</label>
-                                                                    <input type="text" class="form-control datepicker" id="formSearchUpDate2" placeholder="dd/mm/yyyy">
+                                                                    <input type="text" name="Date" class="form-control datepicker" id="formSearchUpDate2" placeholder="dd/mm/yyyy">
                                                                     <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                                                 </div>
                                                             </div>
