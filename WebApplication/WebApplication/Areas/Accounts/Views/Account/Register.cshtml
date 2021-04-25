@@ -1,90 +1,250 @@
-﻿
-                <!---728x90--->
-                <div>
-                    <ul class="list-login">
-                        <li class="switch-agileits" style="float: right; margin-right: 50px;">
-                            <label class="switch">
-                                Already have an account?
-                            </label>
-                            <a href="#" class="btn btn-outline-danger">Log In</a>
-                        </li>
-                        <!-- <li class="clearfix">
-                            <a href="#" class="btn btn-dark">Log In</a>
-                        </li> -->
-                        <!-- <li class="clearfix"> <a href="#" class="btn btn-dark">Log In</a></li> -->
-                    </ul>
-                </div>
+﻿@{ 
+    Layout = null;
 
-                <div class="content-w3ls">
-                    <div class="text-center icon">
-                        <img src="/images/logo-win-hurricane.png" alt="">
+}
+@model RegisterViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Rent It</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="~/assets/ico/favicon.ico">
+
+    <!-- CSS Global -->
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/prettyphoto/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/assets/plugins/owl-carousel2/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/owl-carousel2/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/animate/animate.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/swiper/css/swiper.min.css" rel="stylesheet">
+    <link href="~/assets/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Theme CSS -->
+    <link href="~/assets/css/theme.css" rel="stylesheet">
+    <link href="~/assets/css/theme-red-1.css" rel="stylesheet" id="theme-config-link">
+
+    <!-- Head Libs -->
+    <script src="~/assets/plugins/modernizr.custom.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/iesupport/html5shiv.js"></script>
+    <script src="assets/plugins/iesupport/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="home" class="wide">
+
+    <!-- WRAPPER -->
+    <div class="wrapper">
+
+
+        <!-- CONTENT AREA -->
+        <div class="content-area">
+
+            <section class="page-section no-padding slider">
+                <div class="container full-width">
+
+                    <div class="main-slider">
+                        <div class="owl-carousel" id="main-slider">
+
+                            <!-- Slide 1 -->
+                            <div class="item slide1 ver1">
+                                <div class="caption">
+                                    <div class="container">
+                                        <div class="div-table">
+                                            <div class="div-cell">
+                                                <div class="caption-content">
+                                                    <div class="form-search light">
+
+                                                    </div>
+
+                                                    <h2 class="caption-subtitle">Find Your Car!<br /> Rent A Car Theme</h2>
+                                                    <p class="caption-text">
+                                                        The office commute is often the most tiresome and timeconsuming part of their day, for office goers who travel in their
+                                                        own car. Traffic-congested roads result in slow moving traffic.
+                                                    </p>
+                                                    <p class="caption-text">
+                                                        For people seeking to reach a destination whether for shopping
+                                                        or to reach a hospital for an appointment, driving their car is
+                                                        sometimes preferable to taking the public transport. However,
+                                                        a large number of cars on roads can lead to rising air pollution
+                                                        levels and traffic jams. Booking an Uber or cab for a single
+                                                        person on daily basis can prove costly and is not an affordable
+                                                        solution for many
+                                                    </p>
+                                                    <p class="caption-text">
+                                                        Hence, it is vital to find a sustainable solution that can beat this
+                                                        problem. Carpooling is one such solution. In carpooling, several
+                                                        people can share a car and thus, share their ride fare. It is
+                                                        different from taking an Uber or a ride aggregator because
+                                                        here, the riders are always more than two, besides the driver.
+                                                    </p>
+                                                    <p class="caption-text">
+                                                        Through carpooling, commuters and individuals can easily find
+                                                        co-passengers travelling towards their destination. At the same
+                                                        time, they save costs because ride fares are split among the
+                                                        carpoolers.
+                                                    </p>
+                                                    <p class="caption-text">
+                                                        <a class="btn btn-theme ripple-effect btn-theme-md" href="#">Create Account</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Slide 1 -->
+                            <!-- @*Slide 2*@  -->
+                            <div class="item slide2 ver2">
+                                <div class="caption">
+                                    <div class="container">
+                                        <div class="div-table">
+                                            <div class="div-cell">
+                                                <div class="caption-content">
+                                                    <div class="form-search light">
+                                                        <form action="" method="post">
+                                                            <div class="form-title">
+                                                                <i class="fa fa-globe"></i>
+                                                                <h2>Create an account to experience the service</h2>
+                                                            </div>
+
+                                                            <div class="row row-inputs">
+                                                                <div class="container-fluid">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group has-icon has-label">
+                                                                            <label for="formSearchUpLocation2">First Name</label>
+                                                                            <input asp-for="first_name" type="text" class="form-control" id="formSearchUpLocation2" placeholder="Your first name">
+                                                                            <span class="form-control-icon"><i class="fa fa-pencil"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group has-icon has-label">
+                                                                            <label for="formSearchOffLocation2">Last Name</label>
+                                                                            <input  asp-for="last_name" type="text" class="form-control" id="formSearchOffLocation2" placeholder="Your last name">
+                                                                            <span class="form-control-icon"><i class="fa fa-pencil"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row row-inputs">
+                                                                <div class="container-fluid">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group has-icon has-label">
+                                                                            <label for="formSearchUpDate2">Email</label>
+                                                                            <input asp-for="email" type="email" class="form-control" id="formSearchUpDate2" placeholder="example@gmail.com">
+                                                                            <span class="form-control-icon"><i class="fa fa-envelope"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row row-inputs">
+                                                                <div class="container-fluid">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group has-icon has-label">
+                                                                            <label for="formSearchOffDate2">Phone</label>
+                                                                            <input asp-for="phone" type="text" class="form-control" id="formSearchOffDate2" placeholder="+ (084) 987 xxx">
+                                                                            <span class="form-control-icon"><i class="fa fa-phone"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row row-inputs">
+                                                                <div class="container-fluid">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group has-icon has-label">
+                                                                            <label for="formSearchOffDate2">Username</label>
+                                                                            <input asp-for="user_name" type="text" class="form-control" id="formSearchOffDate2" placeholder="Your username">
+                                                                            <span class="form-control-icon"><i class="fa fa-user"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row row-inputs">
+                                                                <div class="container-fluid">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-group has-icon has-label">
+                                                                            <label for="formSearchOffDate2">Password</label>
+                                                                            <input asp-for="password" type="password" class="form-control" id="formSearchOffDate2" placeholder="Your password">
+                                                                            <span class="form-control-icon"><i class="fa fa-lock"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row row-submit">
+                                                                <div class="container-fluid">
+                                                                    <div class="inner">
+                                                                        <button type="submit" id="formSearchSubmit2" class="btn btn-submit btn-theme ripple-effect pull-right">Create Account</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <h2 class="caption-subtitle">Find Your Car!<br /> Rent A Car Theme</h2>
+                                                    <p class="caption-text">
+                                                        Same distance, but at a much cheaper cost than alone, by sharing your trip with people who are on the same trip as you. Do you already have an account?
+                                                    </p>
+                                                    <p class="caption-text">
+                                                        <a class="btn btn-theme ripple-effect btn-theme-md" href="#">Login</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Slide 2  -->
+                        </div>
                     </div>
-                    <!---728x90--->
-                    <div class="content-bottom">
-                        <form action="" method="post">
-                            <div class="field-group ">
-                                <span class="fa fa-pen" aria-hidden="true"></span>
-                                <div class="wthree-field">
-                                    <input name="first_name" id="text1" type="text" value="" placeholder="First Name" required>
-                                </div>
-                            </div>
-                            <div class="field-group ">
-                                <span class="fa fa-pen" aria-hidden="true"></span>
-                                <div class="wthree-field">
-                                    <input name="last_name" id="text1" type="text" value="" placeholder="Last Name" required>
-                                </div>
-                            </div>
-                            <div class="field-group ">
-                                <span class="fa fa-envelope" aria-hidden="true"></span>
-                                <div class="wthree-field">
-                                    <input name="email" id="text1" type="email" value="" placeholder="Email" required>
-                                </div>
-                            </div>
-                            <div class="field-group ">
-                                <span class="fa fa-phone" aria-hidden="true"></span>
-                                <div class="wthree-field">
-                                    <input name="phone" id="text1" type="text" value="" placeholder="Phone" required>
-                                </div>
-                            </div>
-                            <div class="field-group ">
-                                <span class="fa fa-user" aria-hidden="true"></span>
-                                <div class="wthree-field">
-                                    <input name="user_name" id="text1" type="text" value="" placeholder="Username" required>
-                                </div>
-                            </div>
-                            <div class="field-group ">
-                                <span class="fa fa-lock" aria-hidden="true"></span>
-                                <div class="wthree-field">
-                                    <input name="password" id="myInput" type="Password" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="wthree-field w-50">
-                                <!-- <button type="submit" class="btn btn-outline-danger">Create My Account Free</button> -->
-                                <button type="submit"  class="btn btn-danger">Create My Account Free</button>
-                                <!-- <button type="button" class="btn btn-danger">Danger</button> -->
-                            </div>
-                            <!-- <div class="w-25" style="float: right"><a href="#" class="text-right">Need Help?</a></div> -->
-                            <ul class="list-login">
-                                <li class="switch-agileits">
-                                    <label class="switch">
-                                        <!-- <input type="checkbox">
-                                        <span class="slider round"></span> -->
-                                    </label>
-                                </li>
-                                <li>
-                                    <!-- <a href="#" class="text-right">forgot password?</a> -->
-                                </li>
-                                <li class="clearfix"></li>
-                            </ul>
-                            <ul class="list-login-bottom">
-                                <li class="">
-                                    <!-- <a href="#" class="btn btn-dark">Log In</a> -->
-                                </li>
-                                <li class="">
-                                    <a href="#" class="text-right">Need Help?</a>
-                                </li>
-                                <li class="clearfix"></li>
-                            </ul>
-                        </form>
-                    </div>
+
                 </div>
+            </section>
+
+        </div>
+        <!-- /CONTENT AREA -->
+
+    </div>
+    <!-- /WRAPPER -->
+    <!-- JS Global -->
+    <script src="~/assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="~/assets/plugins/superfish/js/superfish.min.js"></script>
+    <script src="~/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+    <script src="~/assets/plugins/owl-carousel2/owl.carousel.min.js"></script>
+    <script src="~/assets/plugins/jquery.sticky.min.js"></script>
+    <script src="~/assets/plugins/jquery.easing.min.js"></script>
+    <script src="~/assets/plugins/jquery.smoothscroll.min.js"></script>
+    <!--<script src="assets/plugins/smooth-scrollbar.min.js"></script>-->
+    <!--<script src="assets/plugins/wow/wow.min.js"></script>-->
+    <script>
+    // WOW - animated content
+    //new WOW().init();
+    </script>
+    <script src="~/assets/plugins/swiper/js/swiper.jquery.min.js"></script>
+    <script src="~/assets/plugins/datetimepicker/js/moment-with-locales.min.js"></script>
+    <script src="~/assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- JS Page Level -->
+    <script src="~/assets/js/theme-ajax-mail.js"></script>
+    <script src="~/assets/js/theme.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="~/assets/plugins/jquery.cookie.js"></script>
+    <!-- <script src="assets/js/theme-config.js"></script> -->
+    <!--<![endif]-->
+
+</body>
+</html>

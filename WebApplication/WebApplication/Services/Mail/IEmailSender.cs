@@ -7,6 +7,6 @@ namespace WebApplication.Services.Mail
 {
     public interface IEmailSender
     {
-        public Task SendEmailAsync(string email, string subject, string htmlMessage);
+        public bool Seed(string EmailTo, string name, string Subject, string Content);
     }
 }

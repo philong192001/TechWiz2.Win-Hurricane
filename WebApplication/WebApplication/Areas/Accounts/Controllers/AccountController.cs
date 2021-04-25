@@ -16,9 +16,10 @@ namespace WebApplication.Areas.Accounts.Controllers
     {
         public MyDBContext _context;
         public IEmailSender _emailSender;
-        public AccountController(MyDBContext context)
+        public AccountController(MyDBContext context, IEmailSender emailSender)
         {
             _context = context;
+            _emailSender = emailSender;
         }
         [HttpGet]
         public IActionResult Login()
@@ -92,10 +93,10 @@ namespace WebApplication.Areas.Accounts.Controllers
                         };
                         _context.Users.Add(user);
                         _context.SaveChanges();
-                        //_emailSender.SendEmailAsync("truongthanhtu.it.1998@gmail.com", "Feed back", "<h1>Thank you for joining us</h1>");
+                        _emailSender.Seed(user.Email, user.FirstName + " " + user.LastName, "Feed back", "<h1>Thank you for joining us</h1>");
                         var query = _context.Users.Where(x => (x.UserName == model.user_name && x.Password == model.password)).First();
                         HttpContext.Session.SetInt32("id_user", query.Id);
-                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        return RedirectToAction("Login", "Accounts", new { area = "Account" });
                     }
                     else ModelState.AddModelError("", "Registration failed, this account has already registered before measuring");
                 }

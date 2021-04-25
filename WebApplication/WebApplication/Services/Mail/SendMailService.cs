@@ -5,6 +5,7 @@ using MimeKit;
 using System;
 using System.Threading.Tasks;
 using WebApplication.Models.Mail;
+using MimeKit.Text;
 namespace WebApplication.Services.Mail
 {
     public class SendMailService : IEmailSender
@@ -19,41 +20,27 @@ namespace WebApplication.Services.Mail
             logger = _logger;
             logger.LogInformation("Create SendMailService");
         }
-        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+       
+        public bool Seed(string EmailTo, string name, string Subject, string Content)
         {
             var message = new MimeMessage();
-            message.Sender = new MailboxAddress(mailSettings.DisplayName, mailSettings.Mail);
-            message.From.Add(new MailboxAddress(mailSettings.DisplayName, mailSettings.Mail));
-            message.To.Add(MailboxAddress.Parse(email));
-            message.Subject = subject;
-
-            var builder = new BodyBuilder();
-            builder.HtmlBody = htmlMessage;
-            message.Body = builder.ToMessageBody();
-
-            // dùng SmtpClient của MailKit
-            using var smtp = new MailKit.Net.Smtp.SmtpClient();
-
-            try
+            message.From.Add(new MailboxAddress("Admin", "winhurricanee@gmail.com"));
+            message.To.Add(new MailboxAddress(name, EmailTo));
+            message.Subject = Subject;
+            message.Body = new TextPart(TextFormat.Html)
             {
-                smtp.Connect(mailSettings.Host, mailSettings.Port, SecureSocketOptions.StartTls);
-                smtp.Authenticate(mailSettings.Mail, mailSettings.Password);
-                await smtp.SendAsync(message);
-            }
-            catch (Exception ex)
+                Text = (Content == null) ? "test" : Content
+
+            };
+
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
             {
-                // Gửi mail thất bại, nội dung email sẽ lưu vào thư mục mailssave
-                System.IO.Directory.CreateDirectory("mailssave");
-                var emailsavefile = string.Format(@"mailssave/{0}.eml", Guid.NewGuid());
-                await message.WriteToAsync(emailsavefile);
-
-                logger.LogInformation("Error send mail, save- " + emailsavefile);
-                logger.LogError(ex.Message);
+                client.Connect("smtp.gmail.com", 587, false);
+                client.Authenticate("winhurricanee@gmail.com", "Hurricane2021");
+                client.Send(message);
+                client.Disconnect(true);
             }
-
-            smtp.Disconnect(true);
-
-            logger.LogInformation("send mail to: " + email);
+            return true;
         }
     }
 }
