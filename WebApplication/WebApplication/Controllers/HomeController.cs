@@ -22,8 +22,22 @@ namespace WebApplication.Controllers
 
         public IActionResult Index()
         {
-            //var data = _context.Users.ToList();
+            var data = _context.Booking.ToList();
+            ViewBag.listbook = data;
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index([Bind] Booking booking)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Booking.Add(booking);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(booking);
         }
 
         public IActionResult Privacy()

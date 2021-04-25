@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.Models;
-using WebApplication.Services.EnCode_md5;
 using WebApplication.Services.Mail;
 
 namespace WebApplication
@@ -28,17 +27,16 @@ namespace WebApplication
         {
             services.AddControllersWithViews();
             services.AddSingleton<MyDBContext>();
-            services.AddTransient<IEmailSender, SendMailService>();
-            services.AddTransient<IEncodeServices, EncodeServices>();
-            services.AddDistributedMemoryCache();
+            services.AddTransient<IEmailSender, SendMailService > ();
 
             services.AddSession(options =>
             {
-            options.IdleTimeout = TimeSpan.FromDays(1);
-            options.Cookie.HttpOnly = true;
-            options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromDays(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
             });
         }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -54,24 +52,21 @@ namespace WebApplication
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
             app.UseSession();
+            app.UseRouting();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                       name: "MyArea",
-                       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapAreaControllerRoute(
-                    name: "MyAreaAccount",
-                    areaName: "Account",
-                    pattern: "Account/{controller=Account}/{action=Index}");
-
-                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                    name: "MyAreaAccount",
+                    areaName: "Accounts",
+                    pattern: "Accounts/{controller=Account}/{action=Login}");
             });
         }
     }

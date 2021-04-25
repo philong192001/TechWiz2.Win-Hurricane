@@ -15,7 +15,7 @@ namespace WebApplication.Areas.Accounts.Models
 
         [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "Phone Number Required!")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",ErrorMessage = "Entered phone format is not valid.")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         public string phone { get; set; }
 
 

@@ -29,7 +29,7 @@ namespace WebApplication.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-GCDRL3V;Initial Catalog=TechWiz2;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Data Source=118.70.125.210;Initial Catalog=TechWiz2;Persist Security Info=True;User ID=sa;Password=z@GH7ytQ");
             }
         }
 

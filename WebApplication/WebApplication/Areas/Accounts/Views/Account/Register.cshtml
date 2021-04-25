@@ -1,34 +1,90 @@
-﻿@model RegisterViewModel
-<!---728x90--->
-<div>
-    <ul class="list-login">
-        <li class="switch-agileits" style="float: right; margin-right: 50px;">
-            <label class="switch">
-                Already have an account?
-            </label>
-            <a href="#" class="btn btn-outline-danger">Log In</a>
-        </li>
-        <!-- <li class="clearfix">
-            <a href="#" class="btn btn-dark">Log In</a>
-        </li> -->
-        <!-- <li class="clearfix"> <a href="#" class="btn btn-dark">Log In</a></li> -->
-    </ul>
-</div>
+﻿
+                <!---728x90--->
+                <div>
+                    <ul class="list-login">
+                        <li class="switch-agileits" style="float: right; margin-right: 50px;">
+                            <label class="switch">
+                                Already have an account?
+                            </label>
+                            <a href="#" class="btn btn-outline-danger">Log In</a>
+                        </li>
+                        <!-- <li class="clearfix">
+                            <a href="#" class="btn btn-dark">Log In</a>
+                        </li> -->
+                        <!-- <li class="clearfix"> <a href="#" class="btn btn-dark">Log In</a></li> -->
+                    </ul>
+                </div>
 
-<div class="content-w3ls">
-    <div class="text-center icon">
-        <img src="/images/logo-win-hurricane.png" alt="">
-    </div>
-    <!---728x90--->
-    <div class="content-bottom">
-        <form method="post" asp-area="Accounts" asp-controller="Account" asp-action="Register">
-            <input type="text" asp-for="first_name" placeholder="firstname"  value="" />
-            <input type="text" asp-for="email"  value="" placeholder="email" />
-            <input type="text" asp-for="last_name" placeholder="lastname" value="" />
-            <input type="text" asp-for="phone" placeholder="phone"  value="" />
-            <input type="text" asp-for="password" placeholder="pass" value="" />
-            <input type="text" asp-for="user_name" placeholder="username"  value="" />
-            <input type="submit" value="click" />
-        </form>
-    </div>
-</div>
+                <div class="content-w3ls">
+                    <div class="text-center icon">
+                        <img src="/images/logo-win-hurricane.png" alt="">
+                    </div>
+                    <!---728x90--->
+                    <div class="content-bottom">
+                        <form action="" method="post">
+                            <div class="field-group ">
+                                <span class="fa fa-pen" aria-hidden="true"></span>
+                                <div class="wthree-field">
+                                    <input name="first_name" id="text1" type="text" value="" placeholder="First Name" required>
+                                </div>
+                            </div>
+                            <div class="field-group ">
+                                <span class="fa fa-pen" aria-hidden="true"></span>
+                                <div class="wthree-field">
+                                    <input name="last_name" id="text1" type="text" value="" placeholder="Last Name" required>
+                                </div>
+                            </div>
+                            <div class="field-group ">
+                                <span class="fa fa-envelope" aria-hidden="true"></span>
+                                <div class="wthree-field">
+                                    <input name="email" id="text1" type="email" value="" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="field-group ">
+                                <span class="fa fa-phone" aria-hidden="true"></span>
+                                <div class="wthree-field">
+                                    <input name="phone" id="text1" type="text" value="" placeholder="Phone" required>
+                                </div>
+                            </div>
+                            <div class="field-group ">
+                                <span class="fa fa-user" aria-hidden="true"></span>
+                                <div class="wthree-field">
+                                    <input name="user_name" id="text1" type="text" value="" placeholder="Username" required>
+                                </div>
+                            </div>
+                            <div class="field-group ">
+                                <span class="fa fa-lock" aria-hidden="true"></span>
+                                <div class="wthree-field">
+                                    <input name="password" id="myInput" type="Password" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="wthree-field w-50">
+                                <!-- <button type="submit" class="btn btn-outline-danger">Create My Account Free</button> -->
+                                <button type="submit"  class="btn btn-danger">Create My Account Free</button>
+                                <!-- <button type="button" class="btn btn-danger">Danger</button> -->
+                            </div>
+                            <!-- <div class="w-25" style="float: right"><a href="#" class="text-right">Need Help?</a></div> -->
+                            <ul class="list-login">
+                                <li class="switch-agileits">
+                                    <label class="switch">
+                                        <!-- <input type="checkbox">
+                                        <span class="slider round"></span> -->
+                                    </label>
+                                </li>
+                                <li>
+                                    <!-- <a href="#" class="text-right">forgot password?</a> -->
+                                </li>
+                                <li class="clearfix"></li>
+                            </ul>
+                            <ul class="list-login-bottom">
+                                <li class="">
+                                    <!-- <a href="#" class="btn btn-dark">Log In</a> -->
+                                </li>
+                                <li class="">
+                                    <a href="#" class="text-right">Need Help?</a>
+                                </li>
+                                <li class="clearfix"></li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>

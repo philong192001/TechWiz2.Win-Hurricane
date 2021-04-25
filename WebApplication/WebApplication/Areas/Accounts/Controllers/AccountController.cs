@@ -7,7 +7,6 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using WebApplication.Areas.Accounts.Models;
 using WebApplication.Models;
-using WebApplication.Services.EnCode_md5;
 using WebApplication.Services.Mail;
 
 namespace WebApplication.Areas.Accounts.Controllers
@@ -16,7 +15,6 @@ namespace WebApplication.Areas.Accounts.Controllers
     public class AccountController : Controller
     {
         public MyDBContext _context;
-        public IEncodeServices _encodeService;
         public IEmailSender _emailSender;
         public AccountController(MyDBContext context)
         {
@@ -88,6 +86,7 @@ namespace WebApplication.Areas.Accounts.Controllers
                             Password = model.password,
                             LastName = model.last_name,
                             FirstName = model.first_name,
+                            Phone = model.phone,
                             Email = model.email,
                             Role = "Customer"
                         };
@@ -107,7 +106,7 @@ namespace WebApplication.Areas.Accounts.Controllers
                 TempData["Message"] = "Implementation failed. There was a system problem";
             }
             //_emailSender.SendEmailAsync("truongthanhtu.it.1998@gmail.com", "Feed back", "<h1>Thank you for joining us</h1>");
-            return View();
+            return RedirectToAction("Login","Accounts/Account");
         }
 
         public IActionResult Logout()
@@ -131,6 +130,5 @@ namespace WebApplication.Areas.Accounts.Controllers
 
             return sb;
         }
-
     }
 }
