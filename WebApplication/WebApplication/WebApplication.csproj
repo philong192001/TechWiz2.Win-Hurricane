@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Accounts\Data\**" />
+    <Content Remove="Areas\Accounts\Data\**" />
+    <EmbeddedResource Remove="Areas\Accounts\Data\**" />
+    <None Remove="Areas\Accounts\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="MailKit" Version="2.11.1" />
 	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
 	  <PackageReference Include="MimeKit" Version="2.11.0" />
@@ -22,6 +29,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\Accounts\Data\" />
+    <Folder Include="Areas\Accounts\Controllers\" />
+    <Folder Include="Areas\Accounts\Views\" />
   </ItemGroup>
 
 </Project>
