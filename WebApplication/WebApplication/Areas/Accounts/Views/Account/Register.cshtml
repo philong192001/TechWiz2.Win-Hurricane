@@ -111,6 +111,10 @@
                                                 <div class="caption-content">
                                                     <div class="form-search light">
                                                         <form action="" method="post">
+                                                            <div class="row">
+                                                                @Html.AntiForgeryToken()
+                                                                <div asp-validation-summary="ModelOnly" class="text-danger mb-1"></div>
+                                                            </div>
                                                             <div class="form-title">
                                                                 <i class="fa fa-globe"></i>
                                                                 <h2>Create an account to experience the service</h2>
@@ -123,13 +127,15 @@
                                                                             <label for="formSearchUpLocation2">First Name</label>
                                                                             <input asp-for="first_name" type="text" class="form-control" id="formSearchUpLocation2" placeholder="Your first name">
                                                                             <span class="form-control-icon"><i class="fa fa-pencil"></i></span>
+                                                                            <span asp-validation-for="first_name" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchOffLocation2">Last Name</label>
-                                                                            <input  asp-for="last_name" type="text" class="form-control" id="formSearchOffLocation2" placeholder="Your last name">
+                                                                            <input asp-for="last_name" type="text" class="form-control" id="formSearchOffLocation2" placeholder="Your last name">
                                                                             <span class="form-control-icon"><i class="fa fa-pencil"></i></span>
+                                                                            <span asp-validation-for="last_name" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -142,6 +148,7 @@
                                                                             <label for="formSearchUpDate2">Email</label>
                                                                             <input asp-for="email" type="email" class="form-control" id="formSearchUpDate2" placeholder="example@gmail.com">
                                                                             <span class="form-control-icon"><i class="fa fa-envelope"></i></span>
+                                                                            <span asp-validation-for="email" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -154,6 +161,7 @@
                                                                             <label for="formSearchOffDate2">Phone</label>
                                                                             <input asp-for="phone" type="text" class="form-control" id="formSearchOffDate2" placeholder="+ (084) 987 xxx">
                                                                             <span class="form-control-icon"><i class="fa fa-phone"></i></span>
+                                                                            <span asp-validation-for="phone" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -165,6 +173,7 @@
                                                                             <label for="formSearchOffDate2">Username</label>
                                                                             <input asp-for="user_name" type="text" class="form-control" id="formSearchOffDate2" placeholder="Your username">
                                                                             <span class="form-control-icon"><i class="fa fa-user"></i></span>
+                                                                            <span asp-validation-for="user_name" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -176,6 +185,7 @@
                                                                             <label for="formSearchOffDate2">Password</label>
                                                                             <input asp-for="password" type="password" class="form-control" id="formSearchOffDate2" placeholder="Your password">
                                                                             <span class="form-control-icon"><i class="fa fa-lock"></i></span>
+                                                                            <span asp-validation-for="password" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -196,7 +206,7 @@
                                                         Same distance, but at a much cheaper cost than alone, by sharing your trip with people who are on the same trip as you. Do you already have an account?
                                                     </p>
                                                     <p class="caption-text">
-                                                        <a class="btn btn-theme ripple-effect btn-theme-md" href="#">Login</a>
+                                                        <a class="btn btn-theme ripple-effect btn-theme-md" asp-area="Accounts" asp-action="Login" asp-controller="Account" >Login</a>
                                                     </p>
                                                 </div>
                                             </div>

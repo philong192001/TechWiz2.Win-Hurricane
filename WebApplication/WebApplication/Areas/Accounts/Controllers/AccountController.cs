@@ -96,10 +96,13 @@ namespace WebApplication.Areas.Accounts.Controllers
                         _emailSender.Seed(user.Email, user.FirstName + " " + user.LastName, "Feed back", "<h1>Thank you for joining us</h1>");
                         var query = _context.Users.Where(x => (x.UserName == model.user_name && x.Password == model.password)).First();
                         HttpContext.Session.SetInt32("id_user", query.Id);
-                        return RedirectToAction("Login", "Account", new { area = "Accounts" });
+
+                        return RedirectToAction("Index", "Home", new { area = "" });
                     }
                     else ModelState.AddModelError("", "Registration failed, this account has already registered before measuring");
+                    return View();
                 }
+                return View();
             }
             catch (Exception ex)
             {
