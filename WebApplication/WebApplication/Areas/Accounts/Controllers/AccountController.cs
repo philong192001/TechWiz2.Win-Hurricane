@@ -38,8 +38,8 @@ namespace WebApplication.Areas.Accounts.Controllers
 
                     //var data = _context.Users.Where(a => a.Password.Equals(_encodeService.Decrypt(model.password)) && a.UserName.Equals(model.user_name)).FirstOrDefault(); 
                     model.password = Convertmd5(model.password);
-                    var data = _context.Users.Where(a => a.UserName.Equals(model.user_name) &&
-                    a.Password.Equals(model.password)).FirstOrDefault();
+                    var data = _context.Users.Where(a => a.UserName == model.user_name &&
+                    a.Password == model.password).FirstOrDefault();
                     if (data != null)
                     {
                         HttpContext.Session.SetInt32("id_user", data.Id);
