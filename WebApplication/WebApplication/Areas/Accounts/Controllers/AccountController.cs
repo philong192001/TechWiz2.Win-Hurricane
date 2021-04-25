@@ -16,9 +16,10 @@ namespace WebApplication.Areas.Accounts.Controllers
     {
         public MyDBContext _context;
         public IEmailSender _emailSender;
-        public AccountController(MyDBContext context)
+        public AccountController(MyDBContext context, IEmailSender emailSender)
         {
             _context = context;
+            _emailSender = emailSender;
         }
         [HttpGet]
         public IActionResult Login()
