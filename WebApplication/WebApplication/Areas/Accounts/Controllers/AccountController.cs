@@ -68,36 +68,37 @@ namespace WebApplication.Areas.Accounts.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Register(string first_name,string last_name,string phone,string email,string password, string user_name)
+        public IActionResult Register(RegisterViewModel model)
         {
-            try {
-                if (ModelState.IsValid)
-                {
-                    var data = _context.Users.Where(a => a.Password == password && a.UserName.Equals(user_name)).FirstOrDefault();
-                    if (data == null)
-                    {
-                        var user = new Users()
-                        {
-                            UserName = user_name,
-                            Password = password,
-                            LastName = last_name,
-                            FirstName = first_name,
-                            Email = email,
-                            Role = "Customer"
-                        };
-                        _context.Users.Add(user);
-                        _context.SaveChanges();
-                        //_emailSender.SendEmailAsync("truongthanhtu.it.1998@gmail.com", "Feed back", "<h1>Thank you for joining us</h1>");
-                        var query = _context.Users.Where(x => (x.UserName == user_name && x.Password == password)).First();
-                        HttpContext.Session.SetInt32("id_user", query.Id);
-                        return RedirectToAction("Index", "Home", new { area = "Admin" });
-                    }
-                    else ModelState.AddModelError("", "Registration failed, this account has already registered before measuring");
-                }
-            } catch(Exception ex) {
-                Console.WriteLine(ex.Message);
-                TempData["Message"] = "Implementation failed. There was a system problem";
-            }
+            //try {
+            //    if (ModelState.IsValid)
+            //    {
+            //        var data = _context.Users.Where(a => a.Password == model.password && a.UserName.Equals(model.user_name)).FirstOrDefault();
+            //        if (data == null)
+            //        {
+            //            var user = new Users()
+            //            {
+            //                UserName = model.user_name,
+            //                Password = model.password,
+            //                LastName = model.last_name,
+            //                FirstName = model.first_name,
+            //                Email = model.email,
+            //                Role = "Customer"
+            //            };
+            //            _context.Users.Add(user);
+            //            _context.SaveChanges();
+            //            //_emailSender.SendEmailAsync("truongthanhtu.it.1998@gmail.com", "Feed back", "<h1>Thank you for joining us</h1>");
+            //            var query = _context.Users.Where(x => (x.UserName == model.user_name && x.Password == model.password)).First();
+            //            HttpContext.Session.SetInt32("id_user", query.Id);
+            //            return RedirectToAction("Index", "Home", new { area = "Admin" });
+            //        }
+            //        else ModelState.AddModelError("", "Registration failed, this account has already registered before measuring");
+            //    }
+            //} catch(Exception ex) {
+            //    Console.WriteLine(ex.Message);
+            //    TempData["Message"] = "Implementation failed. There was a system problem";
+            //}
+            _emailSender.SendEmailAsync("truongthanhtu.it.1998@gmail.com", "Feed back", "<h1>Thank you for joining us</h1>");
             return View();
         }
 
