@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Areas/Accounts/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+@{
+    Layout = "~/Areas/Accounts/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>@ViewBag.CountUserBooking</h3>
+
+                        <p>Total Booking</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@ViewBag.CountSameFrom<sup style="font-size: 20px"></sup></h3>
+
+                        <p>Same From Trip</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@ViewBag.CountUser</h3>
+
+                        <p>User Registrations</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>@ViewBag.CountDriver</h3>
+
+                        <p>Driver </p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="container col-md-12 col-lg-12 col-12 col-sm-12 col-md-12">
+            <button class="btn btn-success" type="button" onclick="MatchBooking()">Match</button>
+            <table id="myTable" class="table table-bordered display">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Drive</th>
+                        <th>Distance</th>
+                        <th>Amount</th>
+                        <th>To</th>
+                        <th>From</th>
+                        <th>Sub Amount</th>
+                        <th>Date</th>
+                        <th>Status</th>                     
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.listST)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.NameDriver</td>
+                            <td>@item.Distance</td>
+                            <td>@item.Amount</td>
+                            <td>@item.StartTo</td>
+                            <td>@item.FromTo</td>
+                            <td>@item.SubAmount</td>
+                            <td>@item.Date</td>
+                            <td>@item.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->

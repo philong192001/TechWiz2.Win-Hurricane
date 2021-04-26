@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Models;
 using WebApplication.Models.Admin;
+using WebApplication.Services.Mail;
 
 namespace WebApplication.Areas.Accounts.Controllers
 {
@@ -14,13 +15,16 @@ namespace WebApplication.Areas.Accounts.Controllers
     public class AdminController : CheckAccountAdmin
     {
         public MyDBContext _context;
+        public IEmailSender _emailSender;
 
-        public AdminController(MyDBContext context)
+        public AdminController(MyDBContext context, IEmailSender emailSender)
         {
             _context = context;
+            _emailSender = emailSender;
         }
         public IActionResult Index()
         {
+            var shareTrip = _context.ShareTrip.ToList();
             var user_role = HttpContext.Session.GetString("role_user");
             if (user_role == "Admin")
             {
@@ -31,6 +35,7 @@ namespace WebApplication.Areas.Accounts.Controllers
 
                 var query = from b in _context.Booking
                             join u in _context.Users on b.IdUser equals u.Id
+                            where b.Status == 0
                             select new { b, u };
                 var getUserName = query.Select(x => new GetUserName()
                 {
@@ -60,13 +65,14 @@ namespace WebApplication.Areas.Accounts.Controllers
                 ViewBag.CountSameFrom = listSameFrom;
                 ViewBag.CountUserBooking = userbooking;
 
+
                 return View();
             }
             return RedirectToAction("Index", "Home", new { area = "" });
         }
 
         [HttpPost]
-        public IActionResult ShareTrip(string[] data)
+        public async Task<IActionResult> ShareTrip(string[] data)
         {
             var user_role = HttpContext.Session.GetString("role_user");
             if (user_role == "Admin")
@@ -109,7 +115,57 @@ namespace WebApplication.Areas.Accounts.Controllers
 
                 }
                 luutam.OrderBy(x => x.Count);
-                var driver_id = luutam[0].Id.ToString();
+                int driver_id = luutam[0].Id;
+                var date = "";
+                int distance = 0;
+                var startTo = "";
+                var fromTo = "";
+                var total = 0;
+                var bookList = _context.Booking.ToList();
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var record = bookList.Where(x => x.Id == arr[i]).FirstOrDefault();
+                    record.IdDriver = driver_id;
+                    int sum = Convert.ToInt32(record.Amount);
+                    total = sum;
+                    record.Amount = (sum / qty) * record.Member;
+                    startTo = record.StartTo;
+                    fromTo = record.EndFrom;
+                    distance = record.Distance;
+                    date = record.Date;
+                    record.Status = 1;
+                }
+              
+                   var sharTrip =new ShareTrip()
+                    {
+                        FromTo = fromTo,
+                        DriverId = driver_id,
+                        Distance = 100,
+                        Amount = total,
+                        StartTo = startTo,
+                        SubAmount = total,
+                        Date = date,
+                        Status = 1
+                    } ;
+                _context.ShareTrip.Add(sharTrip);
+               await _context.SaveChangesAsync();
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    _context.ShareBooking.Add(new ShareBooking()
+                    {
+                        BookingId = arr[i],
+                        IdSharetrip = sharTrip.Id
+                    });
+                }
+                
+                _context.SaveChanges();
+
+                for(int i=0;i <arr.Length; i++)
+                {
+                   var sendMailUser = _context.Users.Where(u=>u.Id == arr[i] ).FirstOrDefault();
+                    _emailSender.Seed("vipvigame@gmail.com", sendMailUser.FirstName + " " + sendMailUser.LastName, "Feed back", "<h1>Are you ready? You match to going </h1>");
+
+                }
 
                 return View();
             }

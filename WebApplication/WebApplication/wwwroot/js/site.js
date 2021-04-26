@@ -12,7 +12,8 @@
         url: "/Accounts/Admin/ShareTrip",
         data:
         {
-            data: data
+            data: data,
+
         },
         success: function (data) {
             console.log(data)
