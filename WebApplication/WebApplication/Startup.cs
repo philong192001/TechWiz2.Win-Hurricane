@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.Models;
 using WebApplication.Services.Mail;
+using WebApplication.Services.Search;
 
 namespace WebApplication
 {
@@ -31,6 +32,7 @@ namespace WebApplication
             services.AddControllersWithViews();
             services.AddSingleton<MyDBContext>();
             services.AddTransient<IEmailSender, SendMailService > ();
+            services.AddTransient<ISearchService, SearchService> ();
 
             services.AddSession(options =>
             {

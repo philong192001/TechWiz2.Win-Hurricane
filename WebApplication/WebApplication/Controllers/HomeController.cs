@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace WebApplication.Controllers
     {
         private MyDBContext _context;
         private readonly ILogger<HomeController> _logger;
+      
 
         public HomeController(ILogger<HomeController> logger, MyDBContext context)
         {
@@ -26,6 +28,11 @@ namespace WebApplication.Controllers
 
         public IActionResult Index()
         {
+
+          
+
+
+
             //var data = _context.Booking.ToList();
             //var id_userr = HttpContext.Session.GetInt32("id_user");
             //ViewBag.KeyUser = id_userr;
@@ -39,7 +46,8 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(BookModelView reqest_book)
         {
-            try {
+            try
+            {
                 if (HttpContext.Session.GetInt32("id_user") != null)
                 {
                     if (ModelState.IsValid)
@@ -64,17 +72,22 @@ namespace WebApplication.Controllers
                     }
                     return View();
                 }
-               else ModelState.AddModelError("", "This account does not exist in the system");
+                else ModelState.AddModelError("", "This account does not exist in the system");
                 return View();
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 TempData["Message"] = "Implementation failed. There was a system problem";
             }
-            
+
             return View();
 
         }
 
+        public IActionResult SuitableCar(SuitableCarModelView req)
+        {
+            
+        }
         public IActionResult Privacy()
         {
             return View();
