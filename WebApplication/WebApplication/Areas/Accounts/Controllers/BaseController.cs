@@ -15,10 +15,10 @@ namespace WebApplication.Areas.Accounts.Controllers
         {
             var user_id = HttpContext.Session.GetInt32("user_id");
             
-            if (user_id == null)
-            {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login", area = "Accounts" }));
-            }
+            //if (user_id == null)
+            //{
+            //    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login", area = "Accounts" }));
+            //}
 
             base.OnActionExecuting(filterContext);
         }

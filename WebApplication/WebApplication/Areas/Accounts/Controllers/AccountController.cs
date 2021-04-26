@@ -45,9 +45,14 @@ namespace WebApplication.Areas.Accounts.Controllers
                         HttpContext.Session.SetInt32("id_user", data.Id);
                         HttpContext.Session.SetString("role_user", data.Role);
                         if (data.Role == "Customer")
+                        {
                             return RedirectToAction("Index", "Home", new { area = "" });
+                        }
                         else
+                        {
                             return RedirectToAction("Index", "Admin", new { area = "Accounts" });
+                        }
+                           
                     }
                     else ModelState.AddModelError("", "Login failed. Account does not exist");
                     return View();
