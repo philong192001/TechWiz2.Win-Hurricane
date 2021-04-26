@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Areas.Accounts.Controllers
 {
-    public class BasicController : Controller
+    public class CheckAccountAdmin : BasicController
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var user_id = HttpContext.Session.GetInt32("user_id");
-            
-            if (user_id == null)
-            {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Account", action = "Login", area = "Accounts" }));
-            }
+            var user_role = HttpContext.Session.GetString("role_user");
 
+            if (user_role == "Customer")
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Index", area = "" }));
+            }
+           
             base.OnActionExecuting(filterContext);
         }
     }

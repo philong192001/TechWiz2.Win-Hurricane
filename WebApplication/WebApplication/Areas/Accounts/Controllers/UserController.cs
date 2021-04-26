@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Models;
 
@@ -9,7 +10,7 @@ namespace WebApplication.Areas.Accounts.Controllers
 {
     [Area("Accounts")]
     [Route("Accounts/[controller]/[action]")]
-    public class UserController : Controller
+    public class UserController : BasicController
     {
         public MyDBContext _context;
 
@@ -20,37 +21,58 @@ namespace WebApplication.Areas.Accounts.Controllers
         
         public IActionResult Index()
         {
-            var listUsers =_context.Users.ToList();
-            ViewBag.listUsers = listUsers;
-            return View();
+            var user_role = HttpContext.Session.GetString("role_user");
+            if(user_role == "Admin")
+            {
+                var listUsers = _context.Users.ToList();
+                ViewBag.listUsers = listUsers;
+                return View();
+            }
+            return RedirectToAction("Index", "Home", new { area = "" });
+
         }
 
         public IActionResult Create()
         {
-            return View();
+            var user_role = HttpContext.Session.GetString("role_user");
+            if (user_role == "Admin")
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind] Users users)
         {
-            if (ModelState.IsValid)
+            var user_role = HttpContext.Session.GetString("role_user");
+            if (user_role == "Admin")
+            {
+                if (ModelState.IsValid)
             {
                 _context.Add(users);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "User", new { area = "Accounts" });
             }
             return View();
+            }
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
         public IActionResult Update(int? id)
         {
-            if (id == null)
+            var user_role = HttpContext.Session.GetString("role_user");
+            if (user_role == "Admin")
+            {
+                if (id == null)
             {
                 return NotFound();
             }
            var user = _context.Users.FirstOrDefault(x => x.Id == id);
 
             return View(user);
+            }
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

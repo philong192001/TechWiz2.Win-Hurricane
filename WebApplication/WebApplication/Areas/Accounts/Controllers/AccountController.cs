@@ -28,7 +28,7 @@ namespace WebApplication.Areas.Accounts.Controllers
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult Login(LoginViewModel model)
+            public IActionResult Login(LoginViewModel model)
         {
             try
             {
@@ -43,11 +43,11 @@ namespace WebApplication.Areas.Accounts.Controllers
                     if (data != null)
                     {
                         HttpContext.Session.SetInt32("id_user", data.Id);
-
+                        HttpContext.Session.SetString("role_user", data.Role);
                         if (data.Role == "Customer")
                             return RedirectToAction("Index", "Home", new { area = "" });
                         else
-                            return RedirectToAction("Index", "Home", new { area = "Admin" });
+                            return RedirectToAction("Index", "Admin", new { area = "Accounts" });
                     }
                     else ModelState.AddModelError("", "Login failed. Account does not exist");
                     return View();
@@ -110,13 +110,13 @@ namespace WebApplication.Areas.Accounts.Controllers
                 TempData["Message"] = "Implementation failed. There was a system problem";
             }
             //_emailSender.SendEmailAsync("truongthanhtu.it.1998@gmail.com", "Feed back", "<h1>Thank you for joining us</h1>");
-            return RedirectToAction("Login", "Accounts/Account");
+            return RedirectToAction("Login", "Accounts", new { area = "Account" });
         }
 
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Accounts", new { area = "Account" });
+            return RedirectToAction("Login", "Account", new { area = "Accounts" });
         }
         private string Convertmd5(string code)
         {
