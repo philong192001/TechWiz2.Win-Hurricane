@@ -44,7 +44,18 @@ namespace WebApplication.Areas.Accounts.Controllers
                 Status = x.b.Status
                 
             }).ToList();
-            ViewBag.ListBooking = getUserName; 
+
+            var userbooking = getUserName.Count();
+            var listUser = _context.Users.Count();
+            var listDriver = _context.Driver.Count(); 
+            var listSameFrom = _context.Booking.OrderBy(x => x.EndFrom).Count();
+
+            ViewBag.CountUser = listUser;
+            ViewBag.CountDriver = listDriver;
+            ViewBag.ListBooking = getUserName;
+            ViewBag.CountSameFrom = listSameFrom;
+            ViewBag.CountUserBooking = userbooking;
+
             return View();
         }
 
@@ -77,16 +88,19 @@ namespace WebApplication.Areas.Accounts.Controllers
             foreach (var item in result)
             {
                 item.Count = null;
-                int a = item.Seats- qty;
-                if (a>= 0)
+                int sogheconlai = item.Seats- qty;
+                if (sogheconlai >= 0)
                 {
-                    item.Count = a;
+                    item.Count = sogheconlai;
                     luutam.Add(item);
                 }
+                //else(sogheconlai <= 0){
+
+                //}
   
             }
             luutam.OrderBy(x => x.Count);
-            //luutam[0].Id
+            var driver_id = luutam[0].Id.ToString();
             
             return View();
         }

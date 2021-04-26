@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace WebApplication.Models
+namespace WebApplication.Models.Publish
 {
-    public partial class Feedback
+    public class FeedBackModelView
     {
         public int Id { get; set; }
         public int? UserId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public virtual Users User { get; set; }
+        public string UserName { get; set; }
     }
 }

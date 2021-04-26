@@ -21,6 +21,7 @@ namespace WebApplication.Models
         public string Password { get; set; }
         public string IdPoof { get; set; }
         public string Role { get; set; }
+        //public int isDelete { get; set; }
 
         public virtual ICollection<Booking> Booking { get; set; }
         public virtual ICollection<Feedback> Feedback { get; set; }

@@ -24,7 +24,6 @@
     <!-- PAGE -->
     <section class="page-section">
         <div class="container">
-
             <h2 class="section-title"><span>Section Title</span></h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis blandit elementum. Nullam volutpat vestibulum molestie. Duis ac sapien consequat, sollicitudin diam vitae, fringilla lectus. Fusce sit amet finibus tellus. Fusce varius ligula id mi dictum, iaculis gravida mauris eleifend. Praesent viverra mi elementum nulla varius, et luctus nisl tincidunt. Phasellus ullamcorper placerat magna ut varius. Vivamus et ipsum molestie leo bibendum congue vitae mattis leo. Sed id tristique nisi. Maecenas at odio efficitur, mattis sapien ac, vehicula augue. Suspendisse varius vulputate imperdiet. Quisque iaculis lobortis erat. Sed vitae tincidunt elit. Aliquam ultricies lacus id placerat porttitor. Nulla facilisi.</p>
             <hr class="page-divider small" />
@@ -50,8 +49,8 @@
                         <p class="text-right">Right aligned text.</p>
                     </div>
                 </div> -->
-
             </div>
+        </div>
     </section>
     <!-- /PAGE -->
     <!-- PAGE -->
@@ -62,19 +61,17 @@
                 <div class="owl-carousel" id="main-slider">
 
                     <div class="caption-content">
-                        <h2 class="block-title">List FeedBack</h2>
-                        <div class="col-md-4">
-                            <h2 class="block-title">User Name</h2>
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis blandit elementum. Nullam volutpat vestibulum molestie. Duis ac sapien consequat, sollicitudin diam vitae, fringilla lectus."</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="block-title">User Name</h2>
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis blandit elementum. Nullam volutpat vestibulum molestie. Duis ac sapien consequat, sollicitudin diam vitae, fringilla lectus."</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2 class="block-title">User Name</h2>
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis blandit elementum. Nullam volutpat vestibulum molestie. Duis ac sapien consequat, sollicitudin diam vitae, fringilla lectus."</p>
-                        </div>
+                        <h1 style="color:red;" class="block-title">List FeedBack</h1>
+                        @foreach (var item in ViewBag.listFb)
+                        {
+                            <div class="col-md-4">
+                                <h2 class="block-title">@item.UserName</h2>
+                                <h5 class="block-title">@item.Title</h5>
+                                <p>@item.Description</p>
+                            </div>
+                        }
+
+
                     </div>
                     <div class="caption-content">
                         <h2 class="block-title">List FeedBack</h2>
@@ -122,30 +119,11 @@
                 <h2 class="block-title"><span>FeedBack Form</span></h2>
 
                 <!-- Contact form -->
-                <form name="contact-form" method="post" action="#" class="contact-form" id="contact-form">
-
-                    <div class="outer required">
-                        <div class="form-group af-inner">
-                            <label class="sr-only" for="name">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Name" value="" size="30"
-                                   data-toggle="tooltip" title="Name is required"
-                                   class="form-control placeholder" />
-                        </div>
-                    </div>
-
-                    <div class="outer required">
-                        <div class="form-group af-inner">
-                            <label class="sr-only" for="email">Email</label>
-                            <input type="text" name="email" id="email" placeholder="Email" value="" size="30"
-                                   data-toggle="tooltip" title="Email is required"
-                                   class="form-control placeholder" />
-                        </div>
-                    </div>
-
+                <form name="contact-form" method="post" asp-action="Index" class="contact-form" id="contact-form">
                     <div class="outer required">
                         <div class="form-group af-inner">
                             <label class="sr-only" for="subject">Subject</label>
-                            <input type="text" name="subject" id="subject" placeholder="Subject" value="" size="30"
+                            <input  type="text" name="Title" id="subject" placeholder="Subject" value="" size="30"
                                    data-toggle="tooltip" title="Subject is required"
                                    class="form-control placeholder" />
                         </div>
@@ -153,14 +131,14 @@
 
                     <div class="form-group af-inner">
                         <label class="sr-only" for="input-message">Message</label>
-                        <textarea name="message" id="input-message" placeholder="Message" rows="4" cols="50"
+                        <textarea name="Description" id="input-message" placeholder="Description" rows="4" cols="50"
                                   data-toggle="tooltip" title="Message is required"
                                   class="form-control placeholder"></textarea>
                     </div>
 
                     <div class="outer required">
                         <div class="form-group af-inner">
-                            <input type="submit" name="submit" class="form-button form-button-submit btn btn-theme btn-theme-dark" id="submit_btn" value="Send message" />
+                            <input type="submit" name="submit" class="form-button form-button-submit btn btn-theme btn-theme-dark" id="submit_btn" value="Send feedback" />
                         </div>
                     </div>
 
@@ -178,21 +156,21 @@
                             <i class="pull-left fa fa-home"></i>
                             <div class="media-body">
                                 <strong>Address:</strong><br>
-                                987 Main st. New York, NY, 00001, U.S.A
+                                8 Ton That Thuyet,My Dinh , Nam Tu Liem ,Ha Noi
                             </div>
                         </div>
                         <div class="media">
                             <i class="pull-left fa fa-phone"></i>
                             <div class="media-body">
                                 <strong>Telephone:</strong><br>
-                                (012) 345-7689
+                                07775323210
                             </div>
                         </div>
                         <div class="media">
                             <i class="pull-left fa fa-envelope-o"></i>
                             <div class="media-body">
                                 <strong>Fax:</strong><br>
-                                0123456789
+                                0355882001
                             </div>
                         </div>
                         <div class="media">
@@ -203,13 +181,13 @@
                         <div class="media">
                             <div class="media-body">
                                 <strong>Customer Service:</strong><br>
-                                <a href="mailto:hello@rentit.com">hello@rentit.com</a>
+                                <a href="mailto:winhurricanee@gmail.com">winhurricanee@gmail.com</a>
                             </div>
                         </div>
                         <div class="media">
                             <div class="media-body">
                                 <strong>Returns and Refunds:</strong><br>
-                                <a href="mailto:hello@rentit.com">hello@rentit.com</a>
+                                <a href="mailto:winhurricanee@gmail.com">winhurricanee@gmail.com</a>
                             </div>
                         </div>
                     </div>
