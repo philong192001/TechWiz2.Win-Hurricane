@@ -8,13 +8,17 @@ namespace WebApplication.Models.Publish
 {
     public class BookModelView
     {
-        [Required]
+        [Required(ErrorMessage = "Please enter Address From")]
         public string address_from { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter Address To")]
         public string address_to { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter Date")]
+        [DataType(DataType.Date, ErrorMessage = "Need to enter correct winning date format")]
         public string date { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Please enter Date")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Count must be a natural number")]
+        [Range(1, 16)]
         public int menber { get; set; }
     }
 }

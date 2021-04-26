@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
     var key = ViewBag.KeyUser;
 }
-@model HomeModelView
+@model BookModelView
 <!-- CONTENT AREA -->
 <div class="content-area">
 
@@ -34,7 +34,7 @@
 
             <div class="tab-content wow fadeInUp" data-wow-offset="70" data-wow-delay="500ms">
                 <div class="tab-pane fade" id="tab-1">
-                    @await Component.InvokeAsync("ListCarComponent")
+                     @await Component.InvokeAsync("ListCarComponent")
                 </div>
             </div>
     </section>
@@ -54,7 +54,7 @@
                                     <div class="div-cell">
                                         <div class="caption-content">
                                             <h2 class="caption-title">All Discounts Just For You</h2>
-                                            <h3 class="caption-subtitle">Find Best Rental Car</h3>
+                                            <h3 class="caption-subtitle">Book your desired Trip</h3>
                                             <!-- Search form -->
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -62,53 +62,55 @@
                                                     <div class="form-search dark">
                                                         <form asp-for="Index" method="post">
                                                             <div class="form-title">
-                                                                <i class="fa fa-globe"></i>dien
+                                                                <i class="fa fa-globe"></i>
                                                                 <h2>Search for Cheap Rental Cars Wherever Your Are</h2>
                                                             </div>
                                                             @Html.AntiForgeryToken()
-                                                            <div asp-validation-summary="ModelOnly">
-                                                            </div>
+
 
                                                             <div class="row row-inputs">
                                                                 <div class="container-fluid">
+                                                                    <div asp-validation-summary="ModelOnly" class="text-danger">
+                                                                    </div>
                                                                     <div class="row">
                                                                         <div class="field-group">
                                                                             @if (Model != null)
                                                                             {
                                                                                 @TempData["OperationStatus"]
                                                                             }
+                                                                            <span class="text-danger">@ViewBag.SuccessfulAnnouncement</span>  
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input asp-for="@Model.book_model.address_from" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
+                                                                            <input asp-for="@Model.address_from" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                                            <span asp-validation-for="@Model.book_model.address_from" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.address_from" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input asp-for="@Model.book_model.address_to" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
+                                                                            <input asp-for="@Model.address_to" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                                            <span asp-validation-for="@Model.book_model.address_to" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.address_to" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Picking Up Date</label>
-                                                                            <input asp-for="@Model.book_model.date" type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
+                                                                            <input asp-for="@Model.date" type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
                                                                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                                                            <span asp-validation-for="@Model.book_model.date" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.date" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Member</label>
-                                                                            <input asp-for="@Model.book_model.menber" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
+                                                                            <input asp-for="@Model.menber" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
                                                                             <span class="form-control-icon"><i class="fa fa-user"></i></span>
-                                                                            <span asp-validation-for="@Model.book_model.menber" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.menber" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
 
@@ -143,101 +145,107 @@
                             <div class="container">
                                 <div class="div-table">
                                     <div class="div-cell">
-                                        <div class="caption-content">
-                                            <!-- Search form -->
-                                            <div class="form-search light">
-                                                <form method="post">
-                                                    <div class="form-title">
-                                                        <i class="fa fa-globe"></i>
-                                                        <h2>Booking for Cheap Rental Cars Wherever Your Are</h2>
-                                                    </div>
+                                        <div class="caption-content row">
+                                            <div class="col-6">
+                                                <!-- Search form -->
+                                                <div class="form-search light">
+                                                    <form method="post">
+                                                        <div class="form-title">
+                                                            <i class="fa fa-globe"></i>
+                                                            <h1 style="font-size: 20px;text-transform:uppercase;color:white">Search for suitable vehicles</h1>
+                                                        </div>
 
-                                                    <div class="row row-inputs">
-                                                        <div class="container-fluid">
-                                                            <div class="col-sm-12">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchUpLocation2">Picking Up Location</label>
-                                                                    <input type="text" name="StartTo" class="form-control" id="formSearchUpLocation2" placeholder="Airport or Anywhere">
-                                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                        <div class="row row-inputs">
+                                                            <div class="container-fluid">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group has-icon has-label">
+                                                                        <label for="formSearchUpLocation2">Departure location</label>
+                                                                        <input type="text" name="StartTo" class="form-control" id="formSearchUpLocation2" placeholder="Airport or Anywhere">
+                                                                        <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchOffLocation2">Dropping Off Location</label>
-                                                                    <input type="text" name="EndFrom" class="form-control" id="formSearchOffLocation2" placeholder="Airport or Anywhere">
-                                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group has-icon has-label">
+                                                                        <label for="formSearchOffLocation2">The point goes</label>
+                                                                        <input type="text" name="EndFrom" class="form-control" id="formSearchOffLocation2" placeholder="Airport or Anywhere">
+                                                                        <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="row row-inputs">
-                                                        <div class="container-fluid">
-                                                            <div class="col-sm-7">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchUpDate2">Picking Up Date</label>
-                                                                    <input type="text" name="Date" class="form-control datepicker" id="formSearchUpDate2" placeholder="dd/mm/yyyy">
-                                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                                                        <div class="row row-inputs">
+                                                            <div class="container-fluid">
+                                                                <div class="col-sm-7">
+                                                                    <div class="form-group has-icon has-label">
+                                                                        <label for="formSearchUpDate2">Picking Up Date</label>
+                                                                        <input type="text" name="Date" class="form-control datepicker" id="formSearchUpDate2" placeholder="dd/mm/yyyy">
+                                                                        <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-sm-5">
-                                                                <div class="form-group has-icon has-label selectpicker-wrapper">
-                                                                    <label>Picking Up Hour</label>
-                                                                    <select class="selectpicker input-price" data-live-search="true" data-width="100%"
-                                                                            data-toggle="tooltip" title="Select">
-                                                                        <option>20:00 AM</option>
-                                                                        <option>21:00 AM</option>
-                                                                        <option>22:00 AM</option>
-                                                                    </select>
-                                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                                                                <div class="col-sm-5">
+                                                                    <div class="form-group has-icon has-label selectpicker-wrapper">
+                                                                        <label>Picking Up Hour</label>
+                                                                        <select class="selectpicker input-price" data-live-search="true" data-width="100%"
+                                                                                data-toggle="tooltip" title="Select">
+                                                                            <option>20:00 AM</option>
+                                                                            <option>21:00 AM</option>
+                                                                            <option>22:00 AM</option>
+                                                                        </select>
+                                                                        <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="row row-inputs">
-                                                        <div class="container-fluid">
-                                                            <div class="col-sm-7">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchOffDate2">Dropping Off Date</label>
-                                                                    <input type="text" class="form-control datepicker" id="formSearchOffDate2" placeholder="dd/mm/yyyy">
-                                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-5">
-                                                                <div class="form-group has-icon has-label selectpicker-wrapper">
-                                                                    <label>Dropping Off Hour</label>
-                                                                    <select class="selectpicker input-price" data-live-search="true" data-width="100%"
-                                                                            data-toggle="tooltip" title="Select">
-                                                                        <option>20:00 AM</option>
-                                                                        <option>21:00 AM</option>
-                                                                        <option>22:00 AM</option>
-                                                                    </select>
-                                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                                                        <div class="row row-submit">
+                                                            <div class="container-fluid">
+                                                                <div class="inner">
+                                                                    <i class="fa fa-plus-circle"></i> <a href="#">Advanced Search</a>
+                                                                    <button type="submit" id="formSearchSubmit2" class="btn btn-submit btn-theme ripple-effect pull-right">Find Car</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="row row-submit">
-                                                        <div class="container-fluid">
-                                                            <div class="inner">
-                                                                <i class="fa fa-plus-circle"></i> <a href="#">Advanced Search</a>
-                                                                <button type="submit" id="formSearchSubmit2" class="btn btn-submit btn-theme ripple-effect pull-right">Find Car</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
+                                                </div>
+                                                <!-- /Search form -->
                                             </div>
-                                            <!-- /Search form -->
-
-                                            <h2 class="caption-subtitle">Find Your Car!<br /> Rent A Car Theme</h2>
-                                            <p class="caption-text">
-                                                Vivamus in est sit amet risus rutrum facilisis sed ut mauris. Aenean aliquam ex ut sem aliquet, eget vestibulum erat pharetra. Maecenas vel urna nulla. Mauris non risus pulvinar.
-                                            </p>
-                                            <p class="caption-text">
-                                                <a class="btn btn-theme ripple-effect btn-theme-md" href="#">See All Vehicles</a>
-                                            </p>
+                                            <div class="col-6">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">ID</th>
+                                                            <th scope="col">From</th>
+                                                            <th scope="col">To</th>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Member</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mark</td>
+                                                            <td>Otto</td>
+                                                            <td>mdo</td>
+                                                            <td>mdo</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>
+                                                            <td>fat</td>
+                                                            <td>fat</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Larry</td>
+                                                            <td>the Bird</td>
+                                                            <td>twitter</td>
+                                                            <td>twitter</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -245,137 +253,7 @@
                         </div>
                     </div>
                     <!-- /Slide 2 -->
-                    <!-- Slide 3 -->
-                    <div class="item slide3 ver3">
-                        <div class="caption">
-                            <div class="container">
-                                <div class="div-table">
-                                    <div class="div-cell">
-                                        <div class="caption-content">
-                                            <!-- Search form -->
-                                            <div class="form-search light">
-                                                <form action="#">
-                                                    <div class="form-title">
-                                                        <i class="fa fa-globe"></i>
-                                                        <h2>Search for Cheap Rental Cars Wherever Your Are</h2>
-                                                    </div>
-
-                                                    <div class="row row-inputs">
-                                                        <div class="container-fluid">
-                                                            <div class="col-sm-12">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchUpLocation3">Picking Up Location</label>
-                                                                    <input type="text" class="form-control" id="formSearchUpLocation3" placeholder="Airport or Anywhere">
-                                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchOffLocation3">Dropping Off Location</label>
-                                                                    <input type="text" class="form-control" id="formSearchOffLocation3" placeholder="Airport or Anywhere">
-                                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row row-inputs">
-                                                        <div class="container-fluid">
-                                                            <div class="col-sm-7">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchUpDate3">Picking Up Date</label>
-                                                                    <input type="text" class="form-control datepicker" id="formSearchUpDate3" placeholder="dd/mm/yyyy">
-                                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-5">
-                                                                <div class="form-group has-icon has-label selectpicker-wrapper">
-                                                                    <label>Picking Up Hour</label>
-                                                                    <select class="selectpicker input-price" data-live-search="true" data-width="100%"
-                                                                            data-toggle="tooltip" title="Select">
-                                                                        <option>20:00 AM</option>
-                                                                        <option>21:00 AM</option>
-                                                                        <option>22:00 AM</option>
-                                                                    </select>
-                                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row row-inputs">
-                                                        <div class="container-fluid">
-                                                            <div class="col-sm-7">
-                                                                <div class="form-group has-icon has-label">
-                                                                    <label for="formSearchOffDate3">Dropping Off Date</label>
-                                                                    <input type="text" class="form-control datepicker" id="formSearchOffDate3" placeholder="dd/mm/yyyy">
-                                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-5">
-                                                                <div class="form-group has-icon has-label selectpicker-wrapper">
-                                                                    <label>Dropping Off Hour</label>
-                                                                    <select class="selectpicker input-price" data-live-search="true" data-width="100%"
-                                                                            data-toggle="tooltip" title="Select">
-                                                                        <option>20:00 AM</option>
-                                                                        <option>21:00 AM</option>
-                                                                        <option>22:00 AM</option>
-                                                                    </select>
-                                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row row-submit">
-                                                        <div class="container-fluid">
-                                                            <div class="inner">
-                                                                <i class="fa fa-plus-circle"></i> <a href="#">Advanced Search</a>
-                                                                <button type="submit" id="formSearchSubmit3" class="btn btn-submit ripple-effect btn-theme pull-right">Find Car</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <!-- /Search form -->
-
-                                            <h2 class="caption-title">For rental Cars</h2>
-                                            <h3 class="caption-subtitle">Best Deals</h3>
-                                            <p class="caption-text">
-                                                Sales Up  %45 Off<br />
-                                                All Rental Cars Start from  49$
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Slide 3 -->
-                    <!-- Slide 4 -->
-                    <div class="item slide4 ver4">
-                        <div class="caption">
-                            <div class="container">
-                                <div class="div-table">
-                                    <div class="div-cell">
-                                        <div class="caption-content">
-                                            <h2 class="caption-title">For rental Cars</h2>
-                                            <h3 class="caption-subtitle"><span>Best Deals</span></h3>
-                                            <p class="caption-text">
-                                                Sales Up  %45 Off<br />
-                                                All Rental Cars Start from  49$
-                                            </p>
-                                            <p class="caption-text">
-                                                <a class="btn btn-theme ripple-effect btn-theme-md" href="#">See All Vehicles</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Slide 4 -->
-
+                   
                 </div>
             </div>
 
@@ -947,7 +825,7 @@
 
         </div>
     </section>
-    
+
 
 </div>
 <!-- /CONTENT AREA -->

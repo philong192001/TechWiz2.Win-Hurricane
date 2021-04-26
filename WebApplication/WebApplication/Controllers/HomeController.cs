@@ -31,7 +31,7 @@ namespace WebApplication.Controllers
             //ViewBag.KeyUser = id_userr;
             //ViewBag.listbook = data;
             //var data = _context.Car.ToList();
-           
+            ViewBag.SuccessfulAnnouncement = "";
             return View();
         }
 
@@ -58,7 +58,9 @@ namespace WebApplication.Controllers
 
                         _context.Booking.Add(data);
                         _context.SaveChanges();
+                        ViewBag.SuccessfulAnnouncement = "Your request has been sent";
                         return RedirectToAction("Index");
+
                     }
                     return View();
                 }
