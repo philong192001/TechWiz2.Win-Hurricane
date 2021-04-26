@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
     var key = ViewBag.KeyUser;
 }
-@model BookModelView
+@model HomeModelView
 <!-- CONTENT AREA -->
 <div class="content-area">
 
@@ -25,359 +25,55 @@
                     <li class=""><a href="#tab-1" data-toggle="tab">Best Offers</a></li>
                     <!--
                     -->
-                    <li class="active"><a href="#tab-2" data-toggle="tab">Popular Cars</a></li>
+                    <li class="active"><a href="#tab-1" data-toggle="tab">Popular Cars</a></li>
                     <!--
                     -->
-                    <li class=""><a href="#tab-3" data-toggle="tab" onclick="CheckAccount()">Economic Cars</a></li>
+                    <li class=""><a href="#tab-1" data-toggle="tab" onclick="CheckAccount()">Economic Cars</a></li>
                 </ul>
             </div>
 
             <div class="tab-content wow fadeInUp" data-wow-offset="70" data-wow-delay="500ms">
-
-                <!-- tab 1 -->
                 <div class="tab-pane fade" id="tab-1">
 
-                    <div class="swiper swiper--offers-best">
+                    <div class="swiper swiper--offers-economic">
                         <div class="swiper-container">
 
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
-                                <div class="swiper-slide">
-                                    <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                        <div class="media">
-                                            <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x1.jpg">
-                                                <img src="assets/img/preview/cars/car-370x220x1.jpg" alt="" />
-                                                <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                            </a>
-                                        </div>
-                                        <div class="caption text-center">
-                                            <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                            <div class="caption-text">Seats</div>
-                                            <div class="buttons">
-                                                <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                            </div>
-                                            <table class="table">
-                                                <tr>
-                                                    <td><i class="fas fa-map-pin"></i> <b>Ha Noi</b></td>
-                                                    <td><i class="fas fa-angle-double-right"></i> <b>Thai Nguyen</b></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                        <div class="media">
-                                            <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x2.jpg">
-                                                <img src="assets/img/preview/cars/car-370x220x2.jpg" alt="" />
-                                                <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                            </a>
-                                        </div>
-                                        <div class="caption text-center">
-                                            <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                            <div class="caption-text">Seats</div>
-                                            <div class="buttons">
-                                                <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                            </div>
-                                            <table class="table">
-                                                <tr>
-                                                    <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-                                                    <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                        <div class="media">
-                                            <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x3.jpg">
-                                                <img src="assets/img/preview/cars/car-370x220x3.jpg" alt="" />
-                                                <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                            </a>
-                                        </div>
-                                        <div class="caption text-center">
-                                            <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                            <div class="caption-text">Seats</div>
-                                            <div class="buttons">
-                                                <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                            </div>
-                                            <table class="table">
-                                                <tr>
-                                                    <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-                                                    <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                        <div class="media">
-                                            <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x4.jpg">
-                                                <img src="assets/img/preview/cars/car-370x220x4.jpg" alt="" />
-                                                <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                            </a>
-                                        </div>
-                                        <div class="caption text-center">
-                                            <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                            <div class="caption-text">
-                                                Seats
-                                                <div class="buttons">
-                                                    <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                </div>
-                                                <table class="table">
-                                                    <tr>
-                                                        <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-                                                        <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
-                            <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- tab 2 -->
-                    <div class="tab-pane fade active in" id="tab-2">
-
-                        <div class="swiper swiper--offers-popular">
-                            <div class="swiper-container">
-
-                                <div class="swiper-wrapper">
-                                    <!-- Slides -->
+                                @foreach (var item in Model.car_model)
+                                {
                                     <div class="swiper-slide">
                                         <div class="thumbnail no-border no-padding thumbnail-car-card">
                                             <div class="media">
-                                                <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x1.jpg">
+                                                <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/@item.Image">
                                                     <img src="assets/img/preview/cars/car-370x220x1.jpg" alt="" />
                                                     <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
                                                 </a>
                                             </div>
                                             <div class="caption text-center">
-                                                <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                <div class="caption-text">
-                                                    Seats
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
+                                                <h4 class="caption-title"><a href="#">@item.Name</a></h4>
+                                                <div class="caption-text">@item.Type</div>
+                                                <div class="buttons">
+                                                    <a class="btn btn-theme ripple-effect" href="#">View</a>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                                <div class="media">
-                                                    <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x2.jpg">
-                                                        <img src="assets/img/preview/cars/car-370x220x2.jpg" alt="" />
-                                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                    </a>
-                                                </div>
-                                                <div class="caption text-center">
-                                                    <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                    <div class="caption-text">Seats</div>
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                                <div class="media">
-                                                    <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x3.jpg">
-                                                        <img src="assets/img/preview/cars/car-370x220x3.jpg" alt="" />
-                                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                    </a>
-                                                </div>
-                                                <div class="caption text-center">
-                                                    <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                    <div class="caption-text">Seats</div>
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
 
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                                <div class="media">
-                                                    <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x4.jpg">
-                                                        <img src="assets/img/preview/cars/car-370x220x4.jpg" alt="" />
-                                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                    </a>
-                                                </div>
-                                                <div class="caption text-center">
-                                                    <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                    <div class="caption-text">Seats</div>
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                }
 
-                                </div>
-
-                                <!-- If we need navigation buttons -->
-                                <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
-                                <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
 
                             </div>
 
                         </div>
 
-                        <!-- tab 3 -->
-                        <div class="tab-pane fade" id="tab-3">
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+                        <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
 
-                            <div class="swiper swiper--offers-economic">
-                                <div class="swiper-container">
-
-                                    <div class="swiper-wrapper">
-                                        <!-- Slides -->
-                                        <div class="swiper-slide">
-                                            <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                                <div class="media">
-                                                    <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x1.jpg">
-                                                        <img src="assets/img/preview/cars/car-370x220x1.jpg" alt="" />
-                                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                    </a>
-                                                </div>
-                                                <div class="caption text-center">
-                                                    <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                    <div class="caption-text">Seats</div>
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                                <div class="media">
-                                                    <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x2.jpg">
-                                                        <img src="assets/img/preview/cars/car-370x220x2.jpg" alt="" />
-                                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                    </a>
-                                                </div>
-                                                <div class="caption text-center">
-                                                    <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                    <div class="caption-text">Seats</div>
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                                <div class="media">
-                                                    <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x3.jpg">
-                                                        <img src="assets/img/preview/cars/car-370x220x3.jpg" alt="" />
-                                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                    </a>
-                                                </div>
-                                                <div class="caption text-center">
-                                                    <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                    <div class="caption-text">Seats</div>
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="thumbnail no-border no-padding thumbnail-car-card">
-                                                <div class="media">
-                                                    <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars/car-370x220x4.jpg">
-                                                        <img src="assets/img/preview/cars/car-370x220x4.jpg" alt="" />
-                                                        <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                    </a>
-                                                </div>
-                                                <div class="caption text-center">
-                                                    <h4 class="caption-title"><a href="#">VW POLO TRENDLINE 2.0 TDI</a></h4>
-                                                    <div class="caption-text">Seats</div>
-                                                    <div class="buttons">
-                                                        <a class="btn btn-theme ripple-effect" href="#">Booking</a>
-                                                    </div>
-                                                    <table class="table">
-                                                        <tr>
-                                                            <td><i class="fas fa-map-pin"></i> Ha Noi</td>
-
-                                                            <td><i class="fas fa-angle-double-right"></i> Thai Nguyen</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- If we need navigation buttons -->
-                                <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
-                                <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
-
-                            </div>
-
-                        </div>
                     </div>
-
                 </div>
+            </div>
     </section>
     <!-- /PAGE -->
     <!-- PAGE -->
@@ -423,33 +119,33 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input asp-for="address_from" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
+                                                                            <input asp-for="@Model.book_model.address_from" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                                            <span asp-validation-for="address_from" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.book_model.address_from" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input asp-for="address_to" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
+                                                                            <input asp-for="@Model.book_model.address_to" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                                            <span asp-validation-for="address_to" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.book_model.address_to" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Picking Up Date</label>
-                                                                            <input asp-for="date" type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
+                                                                            <input asp-for="@Model.book_model.date" type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
                                                                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                                                            <span asp-validation-for="date" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.book_model.date" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Member</label>
-                                                                            <input asp-for="menber" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
+                                                                            <input asp-for="@Model.book_model.menber" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
                                                                             <span class="form-control-icon"><i class="fa fa-user"></i></span>
-                                                                            <span asp-validation-for="menber" class="text-danger"></span>
+                                                                            <span asp-validation-for="@Model.book_model.menber" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
 
@@ -1122,7 +818,7 @@
 
             <!-- Google map -->
             <div class="google-map">
-                <div id="map-canvas"></div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14896.387255334797!2d105.7822824!3d21.0288119!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x26caee8e7662dd9b!2zRlBUIEFwdGVjaCBIw6AgTuG7mWk!5e0!3m2!1sen!2s!4v1619424549487!5m2!1sen!2s" width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <!-- /Google map -->
 
@@ -1203,38 +899,6 @@
 
         </div>
     </section>
-    <!-- /PAGE -->
-    <!-- PAGE -->
-    <section class="page-section image subscribe">
-        <div class="container">
-
-            <h2 class="section-title wow fadeInDown" data-wow-offset="200" data-wow-delay="100ms">
-                <small>You Can Follow Us By E Mail</small>
-                <span>Subscrıbe</span>
-            </h2>
-
-            <div class="row wow fadeInDown" data-wow-offset="200" data-wow-delay="200ms">
-                <div class="col-md-8 col-md-offset-2">
-
-                    <p class="text-center">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.</p>
-
-                    <!-- Subscribe form -->
-                    <form action="#" class="form-subscribe">
-                        <div class="form-group">
-                            <label for="formSubscribeEmail" class="sr-only">Enter your email here</label>
-                            <input type="text" class="form-control" id="formSubscribeEmail" placeholder="Enter your email here" title="Email is required">
-                        </div>
-                        <button type="submit" class="btn btn-submit btn-theme ripple-effect btn-theme-dark">Subscribe</button>
-                    </form>
-                    <!-- Subscribe form -->
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- /PAGE -->
-    <!-- PAGE -->
     <section class="page-section">
         <div class="container">
 
@@ -1320,118 +984,7 @@
 
         </div>
     </section>
-    <!-- /PAGE -->
-    <!-- PAGE -->
-    <section class="page-section contact dark">
-        <div class="container">
-
-            <!-- Get in touch -->
-
-            <h2 class="section-title wow fadeInDown" data-wow-offset="200" data-wow-delay="100ms">
-                <small>Feel Free to Say Hello!</small>
-                <span>Get in Touch With Us</span>
-            </h2>
-
-            <div class="row">
-                <div class="col-md-6 wow fadeInLeft" data-wow-offset="200" data-wow-delay="200ms">
-                    <!-- Contact form -->
-                    <form name="contact-form" method="post" action="#" class="contact-form" id="contact-form">
-
-                        <div class="row">
-                            <div class="col-md-6">
-
-                                <div class="outer required">
-                                    <div class="form-group af-inner has-icon">
-                                        <label class="sr-only" for="name">Name</label>
-                                        <input type="text" name="name" id="name" placeholder="Name" value="" size="30"
-                                               data-toggle="tooltip" title="Name is required"
-                                               class="form-control placeholder" />
-                                        <span class="form-control-icon"><i class="fa fa-user"></i></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-
-                                <div class="outer required">
-                                    <div class="form-group af-inner has-icon">
-                                        <label class="sr-only" for="email">Email</label>
-                                        <input type="text" name="email" id="email" placeholder="Email" value="" size="30"
-                                               data-toggle="tooltip" title="Email is required"
-                                               class="form-control placeholder" />
-                                        <span class="form-control-icon"><i class="fa fa-envelope"></i></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="outer required">
-                            <div class="form-group af-inner has-icon">
-                                <label class="sr-only" for="subject">Subject</label>
-                                <input type="text" name="subject" id="subject" placeholder="Subject" value="" size="30"
-                                       data-toggle="tooltip" title="Subject is required"
-                                       class="form-control placeholder" />
-                                <span class="form-control-icon"><i class="fa fa-bars"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group af-inner has-icon">
-                            <label class="sr-only" for="input-message">Message</label>
-                            <textarea name="message" id="input-message" placeholder="Message" rows="4" cols="50"
-                                      data-toggle="tooltip" title="Message is required"
-                                      class="form-control placeholder"></textarea>
-                            <span class="form-control-icon"><i class="fa fa-bars"></i></span>
-                        </div>
-
-                        <div class="outer required">
-                            <div class="form-group af-inner">
-                                <input type="submit" name="submit" class="form-button form-button-submit btn btn-block btn-theme ripple-effect btn-theme-dark" id="submit_btn" value="Send message" />
-                            </div>
-                        </div>
-
-                    </form>
-                    <!-- /Contact form -->
-                </div>
-                <div class="col-md-6 wow fadeInRight" data-wow-offset="200" data-wow-delay="200ms">
-
-                    <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
-
-                    <ul class="media-list contact-list">
-                        <li class="media">
-                            <div class="media-left"><i class="fa fa-home"></i></div>
-                            <div class="media-body">Adress: 1600 Pennsylvania Ave NW, Washington, D.C.</div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left"><i class="fa fa"></i></div>
-                            <div class="media-body">DC 20500, ABD</div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left"><i class="fa fa-phone"></i></div>
-                            <div class="media-body">Support Phone: 01865 339665</div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left"><i class="fa fa-envelope"></i></div>
-                            <div class="media-body">E mails: info@example.com</div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left"><i class="fa fa-clock-o"></i></div>
-                            <div class="media-body">Working Hours: 09:30-21:00 except on Sundays</div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left"><i class="fa fa-map-marker"></i></div>
-                            <div class="media-body">View on The Map</div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <!-- /Get in touch -->
-
-        </div>
-    </section>
-    <!-- /PAGE -->
+    
 
 </div>
 <!-- /CONTENT AREA -->

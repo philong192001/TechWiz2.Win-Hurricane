@@ -26,11 +26,16 @@ namespace WebApplication.Controllers
 
         public IActionResult Index()
         {
-            var data = _context.Booking.ToList();
+            //var data = _context.Booking.ToList();
             var id_userr = HttpContext.Session.GetInt32("id_user");
             ViewBag.KeyUser = id_userr;
-            ViewBag.listbook = data;
-            return View();
+            //ViewBag.listbook = data;
+            var data = _context.Car.ToList();
+            var home_model = new HomeModelView()
+            {
+                car_model = data,
+            };
+            return View(home_model);
         }
 
         [HttpPost]

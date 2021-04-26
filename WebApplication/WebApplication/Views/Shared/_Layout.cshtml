@@ -64,7 +64,7 @@
 
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="~/assets/img/logo-win-hurricane.png" alt="Rent It" /></a>
+                        <a asp-action="Index" asp-controller="Home"><img src="~/assets/img/logo-win-hurricane.png" alt="Rent It" /></a>
                     </div>
                     <!-- /Logo -->
                     <!-- Mobile menu toggle button -->
@@ -91,7 +91,7 @@
                         <div class="col-md-3">
                             <div class="widget">
                                 <h4 class="widget-title">About Us</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin ultrices suscipit. Sed commodo vel mauris vel dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Come to our services, we provide the best in trip booking and travel services for customers. Welcome to the CarShare website by Win Hurricane</p>
                                 <ul class="social-icons">
                                     <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
@@ -103,7 +103,7 @@
                         <div class="col-md-3">
                             <div class="widget">
                                 <h4 class="widget-title">News Letter</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>Dolor sit amet, consectetur adipiscing elit.</p>
                                 <form action="#">
                                     <div class="form-group">
                                         <input class="form-control" type="text" placeholder="Enter Your Mail and Get $10 Cash" />
@@ -158,7 +158,7 @@
                                 <a href="#" class="btn btn-theme btn-icon-left pinterest"><i class="fa fa-pinterest"></i>PINTEREST</a>
                                 <a href="#" class="btn btn-theme btn-icon-left google"><i class="fa fa-google"></i>GOOGLE</a>
                             </p>
-                            <div class="copyright">&copy; 2015 Rent It — An One Page Rental Car Theme made with passion by jThemes Studio</div>
+                            <div class="copyright">&copy; @DateTime.Now Desgin by Win Hurricane</div>
                         </div>
 
                     </div>
@@ -190,7 +190,7 @@
     <script src="~/assets/js/theme.js"></script>
     <!--[if (gte ~/IE 9)|!(IE)]><!-->
     <script src="~/assets/plugins/jquery.cookie.js"></script>
-    <script src="~/assets/js/theme-config.js"></script>
+    @*<script src="~/assets/js/theme-config.js"></script>*@
     <!--<![endif]-->
     @RenderSection("Scripts", required: false)
 </body>
