@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var key = ViewBag.KeyUser;
 }
-
+@model BookModelView
 <!-- CONTENT AREA -->
 <div class="content-area">
 
@@ -27,7 +28,7 @@
                     <li class="active"><a href="#tab-2" data-toggle="tab">Popular Cars</a></li>
                     <!--
                     -->
-                    <li class=""><a href="#tab-3" data-toggle="tab">Economic Cars</a></li>
+                    <li class=""><a href="#tab-3" data-toggle="tab" onclick="CheckAccount()">Economic Cars</a></li>
                 </ul>
             </div>
 
@@ -402,38 +403,53 @@
                                                     <div class="form-search dark">
                                                         <form asp-for="Index" method="post">
                                                             <div class="form-title">
-                                                                <i class="fa fa-globe"></i>
+                                                                <i class="fa fa-globe"></i>dien
                                                                 <h2>Search for Cheap Rental Cars Wherever Your Are</h2>
+                                                            </div>
+                                                            @Html.AntiForgeryToken()
+                                                            <div asp-validation-summary="ModelOnly">
                                                             </div>
 
                                                             <div class="row row-inputs">
                                                                 <div class="container-fluid">
-                                                                    <div class="col-sm-3">
-                                                                        <div class="form-group has-icon has-label">
-                                                                            <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input name="StartTo" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
-                                                                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                                    <div class="row">
+                                                                        <div class="field-group">
+                                                                            @if (Model != null)
+                                                                            {
+                                                                                @TempData["OperationStatus"]
+                                                                            }
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input name="EndFrom" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
+                                                                            <input asp-for="address_from" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                                            <span asp-validation-for="address_from" class="text-danger"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        <div class="form-group has-icon has-label">
+                                                                            <label for="formSearchUpLocation">Picking Up Location</label>
+                                                                            <input asp-for="address_to" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
+                                                                            <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                                            <span asp-validation-for="address_to" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Picking Up Date</label>
-                                                                            <input name="Date" type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
+                                                                            <input asp-for="date" type="text" class="form-control datepicker" id="formSearchUpDate" placeholder="dd/mm/yyyy">
                                                                             <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                                                                            <span asp-validation-for="date" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Member</label>
-                                                                            <input name="Member" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
+                                                                            <input asp-for="menber" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
                                                                             <span class="form-control-icon"><i class="fa fa-user"></i></span>
+                                                                            <span asp-validation-for="menber" class="text-danger"></span>
                                                                         </div>
                                                                     </div>
 
@@ -443,8 +459,9 @@
                                                             <div class="row row-submit">
                                                                 <div class="container-fluid">
                                                                     <div class="inner">
-                                                                        @*<i class="fa fa-plus-circle"></i> <a href="#">Advanced Search</a>*@
+
                                                                         <button type="submit" id="formSearchSubmit" class="btn btn-submit btn-theme pull-right">Find Car</button>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -470,7 +487,7 @@
                                         <div class="caption-content">
                                             <!-- Search form -->
                                             <div class="form-search light">
-                                                <form  method="post">
+                                                <form method="post">
                                                     <div class="form-title">
                                                         <i class="fa fa-globe"></i>
                                                         <h2>Booking for Cheap Rental Cars Wherever Your Are</h2>
@@ -481,7 +498,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-group has-icon has-label">
                                                                     <label for="formSearchUpLocation2">Picking Up Location</label>
-                                                                    <input  type="text" name="StartTo" class="form-control" id="formSearchUpLocation2" placeholder="Airport or Anywhere">
+                                                                    <input type="text" name="StartTo" class="form-control" id="formSearchUpLocation2" placeholder="Airport or Anywhere">
                                                                     <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                                 </div>
                                                             </div>
