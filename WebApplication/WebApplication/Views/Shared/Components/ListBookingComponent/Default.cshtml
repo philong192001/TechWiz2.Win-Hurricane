@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SuitableCarModelView>
+@{
+    var key = 1;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Date</th>
+            <th scope="col">Member</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@(key ++)</th>
+                    <td>@item.address_from</td>
+                    <td>@item.address_to</td>
+                    <td>@item.date</td>
+                    <td>@item.member</td>
+                </tr>
+            }
+        }
+
+
+
+
+    </tbody>
+</table>

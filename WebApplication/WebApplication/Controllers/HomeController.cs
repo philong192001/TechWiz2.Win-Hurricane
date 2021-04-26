@@ -11,27 +11,26 @@ using System.Threading.Tasks;
 using WebApplication.Areas.Accounts.Controllers;
 using WebApplication.Models;
 using WebApplication.Models.Publish;
+using WebApplication.Services.Search;
 
 namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
         private MyDBContext _context;
+        private ISearchService _search_service;
         private readonly ILogger<HomeController> _logger;
       
 
-        public HomeController(ILogger<HomeController> logger, MyDBContext context)
+        public HomeController(ILogger<HomeController> logger, MyDBContext context, ISearchService search_ervice)
         {
             _context = context;
             _logger = logger;
+            _search_service = search_ervice;
         }
 
         public IActionResult Index()
         {
-
-          
-
-
 
             //var data = _context.Booking.ToList();
             //var id_userr = HttpContext.Session.GetInt32("id_user");
@@ -84,9 +83,12 @@ namespace WebApplication.Controllers
 
         }
 
-        public IActionResult SuitableCar(SuitableCarModelView req)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SuitableCar(SuitableCarModelView req )
         {
-            
+            var data = _search_service.Search(req);
+            return View("/Views/Shared/Components/ListBookingComponent/Default.cshtml", data);
         }
         public IActionResult Privacy()
         {

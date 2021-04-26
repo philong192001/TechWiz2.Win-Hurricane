@@ -1,0 +1,57 @@
+﻿@model SuitableCarModelView
+
+<div class="form-search light">
+    <form method="post" asp-controller="Home" asp-action="SuitableCar" asp-area="">
+        <div class="form-title">
+            <i class="fa fa-globe"></i>
+            <h1 style="font-size: 20px;text-transform:uppercase;color:white">Search for suitable vehicles</h1>
+        </div>
+
+        <div class="row row-inputs">
+            <div class="container-fluid">
+                <div class="col-sm-12">
+                    <div class="form-group has-icon has-label">
+                        <label for="formSearchUpLocation2">Departure location</label>
+                        <input type="text" asp-for="address_from" class="form-control" id="formSearchUpLocation2" placeholder="Airport or Anywhere">
+                        <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group has-icon has-label">
+                        <label for="formSearchOffLocation2">The point goes</label>
+                        <input type="text" asp-for="address_to" class="form-control" id="formSearchOffLocation2" placeholder="Airport or Anywhere">
+                        <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-inputs">
+            <div class="container-fluid">
+                <div class="col-sm-7">
+                    <div class="form-group has-icon has-label">
+                        <label for="formSearchUpDate2">Picking Up Date</label>
+                        <input type="text" asp-for="date" class="form-control datepicker" id="formSearchUpDate2" placeholder="dd/mm/yyyy">
+                        <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group has-icon has-label selectpicker-wrapper">
+                        <label>Member</label>
+                        <input type="text" asp-for="member" class="form-control " id="formSearchUpDate2" >
+                        <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-submit">
+            <div class="container-fluid">
+                <div class="inner">
+                    <i class="fa fa-plus-circle"></i> <a href="#">Advanced Search</a>
+                    <button type="submit" id="formSearchSubmit2" class="btn btn-submit btn-theme ripple-effect pull-right">Find Car</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
