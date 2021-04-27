@@ -82,9 +82,12 @@ namespace WebApplication.Areas.Accounts.Controllers
             {
                 return NotFound(); 
             }
-            if (ModelState.IsValid)
+            var user = _context.Users.Find(id);
+            if(user != null && ModelState.IsValid)
+          
             {
-                _context.Users.Update(users);
+                user = users;
+               
                 _context.SaveChanges();
                 return RedirectToAction("Index", "User", new { area = "Accounts" });
             }
