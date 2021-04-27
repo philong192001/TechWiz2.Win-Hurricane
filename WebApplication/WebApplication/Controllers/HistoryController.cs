@@ -39,5 +39,25 @@ namespace WebApplication.Controllers
             }
             return RedirectToAction("Index", "Home", new { area = "" });
         }
+        public IActionResult Detail(int Id)
+        {
+            var data = _context.ShareTrip.Where(x => x.Id == Id).FirstOrDefault();
+            return View(data);
+        }
+        public IActionResult Delete(int Id)
+        {
+            var id_user = HttpContext.Session.GetInt32("id_user");
+            var data = _context.ShareTrip.Where(x => x.Id == Id).FirstOrDefault();
+            var data_1 = _context.ShareBooking.Where(x => x.IdSharetrip == Id).ToList();
+            var value = new Booking();
+            foreach(var item in data_1)
+            {
+                value = _context.Booking.Where(x => x.Id == item.BookingId && x.IdUser == id_user).FirstOrDefault();
+            }
+            _context.Booking.Remove(value);
+            _context.SaveChanges();
+            //var data_1 = _context.Booking.Where(x=>x.Id)
+            return View();
+        }
     }
 }

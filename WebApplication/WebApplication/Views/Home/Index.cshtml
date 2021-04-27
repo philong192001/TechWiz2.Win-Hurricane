@@ -34,7 +34,7 @@
 
             <div class="tab-content wow fadeInUp" data-wow-offset="70" data-wow-delay="500ms">
                 <div class="tab-pane fade" id="tab-1">
-                     @await Component.InvokeAsync("ListCarComponent")
+                    @await Component.InvokeAsync("ListCarComponent")
                 </div>
             </div>
     </section>
@@ -78,13 +78,18 @@
                                                                             {
                                                                                 @TempData["OperationStatus"]
                                                                             }
-                                                                            <span class="text-danger">@ViewBag.SuccessfulAnnouncement</span>  
+                                                                            <span class="text-danger">@ViewBag.SuccessfulAnnouncement</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input asp-for="@Model.address_from" type="text" class="form-control" id="formSearchUpLocation" placeholder="From">
+                                                                            <select asp-for="@Model.address_from" style="background-color: #14181c ;" class="form-control custom-select" placeholder="From" id="inputGroupSelect01">
+                                                                                <option selected  value="Ha Noi"class="custom-select">Hà Nội</option>
+                                                                                <option value="Ho Chi Minh" class="custom-select">Ho Chi Minh</option>
+                                                                                <option value="Da Nang" class="custom-select">Da Nang</option>
+                                                                                <option value="Hue" class="custom-select">Hue</option>
+                                                                            </select>
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                                             <span asp-validation-for="@Model.address_from" class="text-danger"></span>
                                                                         </div>
@@ -92,7 +97,12 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpLocation">Picking Up Location</label>
-                                                                            <input asp-for="@Model.address_to" type="text" class="form-control" id="formSearchUpLocation" placeholder="To">
+                                                                            <select asp-for="@Model.address_to" style="background-color: #14181c ;" placeholder="From" class="form-control custom-select" id="inputGroupSelect01">
+                                                                                <option selected value="Ha Noi" class="custom-select">Hà Nội</option>
+                                                                                <option value="Ho Chi Minh" class="custom-select">Ho Chi Minh</option>
+                                                                                <option value="Da Nang" class="custom-select">Da Nang</option>
+                                                                                <option value="Hue" class="custom-select">Hue</option>
+                                                                            </select>
                                                                             <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                                             <span asp-validation-for="@Model.address_to" class="text-danger"></span>
                                                                         </div>
@@ -162,7 +172,7 @@
                         </div>
                     </div>
                     <!-- /Slide 2 -->
-                   
+
                 </div>
             </div>
 

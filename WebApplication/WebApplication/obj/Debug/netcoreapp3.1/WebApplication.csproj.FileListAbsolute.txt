@@ -326,3 +326,4 @@ D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\
 D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\History\Index.cshtml.g.cs
 D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
 D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\xunit.core.dll
+D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\History\Index1.cshtml.g.cs

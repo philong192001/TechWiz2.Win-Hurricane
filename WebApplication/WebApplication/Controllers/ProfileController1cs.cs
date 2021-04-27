@@ -32,5 +32,24 @@ namespace WebApplication.Controllers
             }
             return RedirectToAction("Index", "Home", new { area = "" });
         }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Edit(Users model) 
+        {
+            if (ModelState.IsValid)
+            {
+                var id_user = HttpContext.Session.GetInt32("id_user");
+                var data = _context.Users.Where(x => x.Id == id_user).FirstOrDefault();
+                data.FirstName = model.FirstName;
+                data.LastName = model.LastName;
+                data.Phone = model.Phone;
+                data.Email = model.Email;
+                _context.Users.Update(data);
+                _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Profile");
+            }
+            return View();
+        }
     }
 }
