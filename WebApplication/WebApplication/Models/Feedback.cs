@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication.Models
 {
@@ -7,6 +8,8 @@ namespace WebApplication.Models
     {
         public int Id { get; set; }
         public int? UserId { get; set; }
+        [Required(ErrorMessage = "Please enter a title")]
+
         public string Title { get; set; }
         public string Description { get; set; }
 

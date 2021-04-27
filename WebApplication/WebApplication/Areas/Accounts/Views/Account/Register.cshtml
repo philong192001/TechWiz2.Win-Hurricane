@@ -38,6 +38,50 @@
     <script src="assets/plugins/iesupport/html5shiv.js"></script>
     <script src="assets/plugins/iesupport/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-repeat: no-repeat;
+        }
+
+            .section h1 {
+                text-align: center;
+                font-size: 6rem;
+                font-family: "Cookie";
+                padding: 20px;
+                margin: 15px;
+                z-index: 1;
+                opacity: 0.7;
+            }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .color-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            opacity: 0.5;
+        }
+
+        form div.row div.text-danger ul li {
+            padding-left: 65px;
+            padding-top: 15px;
+            font-weight: 800;
+        }
+    </style>
 </head>
 <body id="home" class="wide">
 
@@ -50,58 +94,7 @@
 
             <section class="page-section no-padding slider">
                 <div class="container full-width">
-
-                    <div class="main-slider">
-                        <div class="owl-carousel" id="main-slider">
-
-                            <!-- Slide 1 -->
-                            <div class="item slide1 ver1">
-                                <div class="caption">
-                                    <div class="container">
-                                        <div class="div-table">
-                                            <div class="div-cell">
-                                                <div class="caption-content">
-                                                    <div class="form-search light">
-
-                                                    </div>
-
-                                                    <h2 class="caption-subtitle">Find Your Car!<br /> Rent A Car Theme</h2>
-                                                    <p class="caption-text">
-                                                        The office commute is often the most tiresome and timeconsuming part of their day, for office goers who travel in their
-                                                        own car. Traffic-congested roads result in slow moving traffic.
-                                                    </p>
-                                                    <p class="caption-text">
-                                                        For people seeking to reach a destination whether for shopping
-                                                        or to reach a hospital for an appointment, driving their car is
-                                                        sometimes preferable to taking the public transport. However,
-                                                        a large number of cars on roads can lead to rising air pollution
-                                                        levels and traffic jams. Booking an Uber or cab for a single
-                                                        person on daily basis can prove costly and is not an affordable
-                                                        solution for many
-                                                    </p>
-                                                    <p class="caption-text">
-                                                        Hence, it is vital to find a sustainable solution that can beat this
-                                                        problem. Carpooling is one such solution. In carpooling, several
-                                                        people can share a car and thus, share their ride fare. It is
-                                                        different from taking an Uber or a ride aggregator because
-                                                        here, the riders are always more than two, besides the driver.
-                                                    </p>
-                                                    <p class="caption-text">
-                                                        Through carpooling, commuters and individuals can easily find
-                                                        co-passengers travelling towards their destination. At the same
-                                                        time, they save costs because ride fares are split among the
-                                                        carpoolers.
-                                                    </p>
-                                                    <p class="caption-text">
-                                                        <a class="btn btn-theme ripple-effect btn-theme-md" href="#">Create Account</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Slide 1 -->
+                    <div class="main-slider section">
                             <!-- @*Slide 2*@  -->
                             <div class="item slide2 ver2">
                                 <div class="caption">
@@ -113,7 +106,7 @@
                                                         <form action="" method="post">
                                                             <div class="row">
                                                                 @Html.AntiForgeryToken()
-                                                                <div asp-validation-summary="ModelOnly" class="text-danger mb-1"></div>
+                                                                @*<div asp-validation-summary="ModelOnly" class="text-danger mb-1"></div>*@
                                                             </div>
                                                             <div class="form-title">
                                                                 <i class="fa fa-globe"></i>
@@ -206,8 +199,8 @@
                                                         Same distance, but at a much cheaper cost than alone, by sharing your trip with people who are on the same trip as you. Do you already have an account?
                                                     </p>
                                                     <p class="caption-text">
-                                                        <a class="btn btn-theme ripple-effect btn-theme-md" asp-area="Accounts" asp-action="Login" asp-controller="Account" >Login</a>
-                                                        <a class="btn btn-theme ripple-effect btn-theme-md" asp-area="" asp-action="Index" asp-controller="Home" >Back To Home</a>
+                                                        <a class="btn btn-theme ripple-effect btn-theme-md" asp-area="Accounts" asp-action="Login" asp-controller="Account">Login</a>
+                                                        <a class="btn btn-theme ripple-effect btn-theme-md" asp-area="" asp-action="Index" asp-controller="Home">Back To Home</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -217,8 +210,12 @@
                             </div>
                             <!-- /Slide 2  -->
                         </div>
+                    <div class="video-container" style="height: 100vh;">
+                        <div class="color-overlay"></div>
+                        <video autoplay loop muted style="width: 100%;">
+                            <source src="~/assets/img/preview/slider/McLaren.mp4" type="video/mp4">
+                        </video>
                     </div>
-
                 </div>
             </section>
 

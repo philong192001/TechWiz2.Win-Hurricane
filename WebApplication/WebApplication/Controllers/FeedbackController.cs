@@ -32,7 +32,7 @@ namespace WebApplication.Controllers
                 Title = x.f.Title,
                 Description = x.f.Description,
                 UserName = x.u.UserName             
-            }).ToList();
+            }).Take(5).ToList();
             ViewBag.listFb = listFeedBack;
             return View();
         }
@@ -43,7 +43,7 @@ namespace WebApplication.Controllers
         {
             feedback.UserId = HttpContext.Session.GetInt32("id_user");
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && feedback.UserId != null)
             {
                 _context.Feedback.Add(feedback);
                 _context.SaveChanges();
