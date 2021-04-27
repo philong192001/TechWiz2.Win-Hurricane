@@ -47,7 +47,7 @@ namespace WebApplication.Controllers
                 _context.Users.Update(data);
                 _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Profile");
+                return RedirectToAction("Index", "Home", new { area = "" });
             }
             return View();
         }

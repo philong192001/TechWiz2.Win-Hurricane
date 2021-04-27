@@ -46,18 +46,20 @@ namespace WebApplication.Controllers
         }
         public IActionResult Delete(int Id)
         {
-            var id_user = HttpContext.Session.GetInt32("id_user");
+            //var id_user = HttpContext.Session.GetInt32("id_user");
+            //var data = _context.ShareTrip.Where(x => x.Id == Id).FirstOrDefault();
+            //var data_1 = _context.ShareBooking.Where(x => x.IdSharetrip == Id).ToList();
+            //foreach(var item in data_1)
+            //{
+            //    va_context.Booking.Where(x => x.Id == item.BookingId && x.IdUser == id_user).FirstOrDefault());
+            //}
+            //_context.SaveChanges();
+            ////var data_1 = _context.Booking.Where(x=>x.Id)
             var data = _context.ShareTrip.Where(x => x.Id == Id).FirstOrDefault();
-            var data_1 = _context.ShareBooking.Where(x => x.IdSharetrip == Id).ToList();
-            var value = new Booking();
-            foreach(var item in data_1)
-            {
-                value = _context.Booking.Where(x => x.Id == item.BookingId && x.IdUser == id_user).FirstOrDefault();
-            }
-            _context.Booking.Remove(value);
+            data.Status = 0;
+            _context.Update(data);
             _context.SaveChanges();
-            //var data_1 = _context.Booking.Where(x=>x.Id)
-            return View();
+            return View(nameof(Index));
         }
     }
 }
