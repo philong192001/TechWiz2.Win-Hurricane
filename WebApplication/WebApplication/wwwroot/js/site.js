@@ -6,7 +6,17 @@
             data.push([checkboxes[i].id])
         }
     }
-    console.log(data)
+    if (data.length < 2) {
+        swal({
+
+            text: "No invalid ",
+            icon: "error",
+        });
+        return;
+    }
+    
+ 
+
     $.ajax({
         method: "POST",
         url: "/Accounts/Admin/ShareTrip",
@@ -16,11 +26,32 @@
 
         },
         success: function (data) {
-            console.log(data)
-            //window.location.href = '/Admin';
+            if (data === "false") {
+                swal({
+                    
+                    text: "No cars with enough seats",
+                    icon: "error",
+                });
+
+
+            } else {
+
+                swal({
+                    title: "Success",
+                    
+                    icon: "success",
+                    timer: 9000
+                });
+                setTimeout(function () {
+
+                   
+                }, 3000);
+
+            }
 
         }
     });
 }
+   
 
 

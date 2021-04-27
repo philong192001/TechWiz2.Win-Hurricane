@@ -13,7 +13,6 @@ namespace WebApplication.Models
         public int Id { get; set; }
         public int? IdUser { get; set; }
         public int? IdDriver { get; set; }
-       
         public string StartTo { get; set; }
         public string EndFrom { get; set; }
         public string Date { get; set; }

@@ -20,6 +20,7 @@ namespace WebApplication.Models
         public int? SubAmount { get; set; }
         public string Date { get; set; }
         public int? Status { get; set; }
+        public int Member { get; set; }
 
         public virtual ICollection<ShareBooking> ShareBooking { get; set; }
     }

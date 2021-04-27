@@ -1,10 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Accounts/Views/Shared/_LayoutAdmin.cshtml";
-
-}
-@{
-    Layout = "~/Areas/Accounts/Views/Shared/_LayoutAdmin.cshtml";
-
+    
 }
 
 <!-- Main content -->
@@ -16,7 +12,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>@ViewBag.CountUserBooking</h3>
+                        <h3>@ViewBag.CountShareTrip</h3>
 
                         <p>Total Booking</p>
                     </div>
@@ -83,7 +79,7 @@
                         <th>id</th>
                         <th>Drive</th>
                         <th>Distance</th>
-                        <th>Amount</th>
+                       
                         <th>To</th>
                         <th>From</th>
                         <th>Sub Amount</th>
@@ -94,15 +90,16 @@
                 <tbody>
                     @foreach (var item in ViewBag.listST)
                     {
+                        
                         <tr>
                             <td>@item.Id</td>
                             <td>@item.NameDriver</td>
-                            <td>@item.Distance</td>
-                            <td>@item.Amount</td>
+                            <td>@item.Distance km</td>                           
                             <td>@item.StartTo</td>
                             <td>@item.FromTo</td>
-                            <td>@item.SubAmount</td>
+                            <td>@item.SubAmount VNĐ</td>
                             <td>@item.Date</td>
+
                             <td>@item.Status</td>
                         </tr>
                     }

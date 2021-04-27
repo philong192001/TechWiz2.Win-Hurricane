@@ -51,6 +51,7 @@ namespace WebApplication.Areas.Accounts.Controllers
                     IsCancel = x.b.IsCancel,
                     Member = x.b.Member,
                     Status = x.b.Status
+                   
 
                 }).ToList();
 
@@ -114,17 +115,21 @@ namespace WebApplication.Areas.Accounts.Controllers
                     //}
 
                 }
+                if (luutam.Count == 0) return Content("false");
                 luutam.OrderBy(x => x.Count);
                 int driver_id = luutam[0].Id;
+                var peopleDriver = _context.Driver.Find(driver_id);
                 var date = "";
                 int distance = 0;
                 var startTo = "";
                 var fromTo = "";
                 var total = 0;
                 var bookList = _context.Booking.ToList();
+                var boookLists = new List<Booking>();
                 for (int i = 0; i < arr.Length; i++)
                 {
                     var record = bookList.Where(x => x.Id == arr[i]).FirstOrDefault();
+                    boookLists.Add(record);
                     record.IdDriver = driver_id;
                     int sum = Convert.ToInt32(record.Amount);
                     total = sum;
@@ -135,7 +140,12 @@ namespace WebApplication.Areas.Accounts.Controllers
                     date = record.Date;
                     record.Status = 1;
                 }
-              
+                var userEmail = new List<Users>();
+                foreach (var item in boookLists)
+                {
+                    var user = _context.Users.Find(item.IdUser);
+                    userEmail.Add(user);
+                }
                    var sharTrip =new ShareTrip()
                     {
                         FromTo = fromTo,
@@ -145,7 +155,8 @@ namespace WebApplication.Areas.Accounts.Controllers
                         StartTo = startTo,
                         SubAmount = total,
                         Date = date,
-                        Status = 1
+                        Status = 1,
+                        Member = qty
                     } ;
                 _context.ShareTrip.Add(sharTrip);
                await _context.SaveChangesAsync();
@@ -160,13 +171,18 @@ namespace WebApplication.Areas.Accounts.Controllers
                 
                 _context.SaveChanges();
 
-                for(int i=0;i <arr.Length; i++)
+                foreach (var email in userEmail)
                 {
-                   var sendMailUser = _context.Users.Where(u=>u.Id == arr[i] ).FirstOrDefault();
-                    _emailSender.Seed("vipvigame@gmail.com", sendMailUser.FirstName + " " + sendMailUser.LastName, "Feed back", "<h1>Are you ready? You match to going </h1>");
-
+                    _emailSender.Seed(email.Email, "" + " " + "", "Welcome to CarShare", "<h1>Are you ready? You have trip at " + sharTrip.Date + "please prepare well for this trip </h1> </hr> People joining the same trip are:" + peopleDriver.Name);
                 }
+               
+                 
+                    
 
+                    //var getBookingByUser = _context.ShareBooking
+                  
+
+              
                 return View();
             }
             return RedirectToAction("Index", "Home", new { area = "" });

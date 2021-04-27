@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Accounts/Views/Shared/_LayoutAdmin.cshtml";
-    var count = 1;
-    var data = ViewBag.ListBooking;
+    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
 }
 
 <!-- Main content -->
@@ -13,7 +12,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>@ViewBag.CountUserBooking</h3>
+                        @*<h3>@ViewBag.CountShareTrip</h3>*@
 
                         <p>Total Booking</p>
                     </div>
@@ -28,7 +27,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>@ViewBag.CountSameFrom<sup style="font-size: 20px"></sup></h3>
+                        @*<h3>@ViewBag.CountSameFrom<sup style="font-size: 20px"></sup></h3>*@
 
                         <p>Same From Trip</p>
                     </div>
@@ -43,7 +42,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>@ViewBag.CountUser</h3>
+                        @*<h3>@ViewBag.CountUser</h3>*@
 
                         <p>User Registrations</p>
                     </div>
@@ -58,7 +57,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>@ViewBag.CountDriver</h3>
+                        @*<h3>@ViewBag.CountDriver</h3>*@
 
                         <p>Driver </p>
                     </div>
@@ -73,48 +72,51 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="container col-md-12 col-lg-12 col-12 col-sm-12 col-md-12">
-            <button class="btn btn-success" type="button" onclick="MatchBooking()">Match</button>
             <table id="myTable" class="table table-bordered display">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>User</th>
-                        <th>Drive</th>
+                        @*<th>booking Id</th>
+                        <th>ShareTrip ID</th>*@
+                        
+                        <th>Name Driver</th>
                         <th>To</th>
                         <th>From</th>
                         <th>Date</th>
                         <th>Distance</th>
                         <th>Amount</th>
+                        
                         <th>Status</th>
                         <th>Member</th>
                         
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
-                        @for (int i = 0; i < data.Count; i++)
+                    @foreach (var item in ViewBag.listBookSucces)
+                    {
 
-                        {
-                         <tr>
-                          <td>
-                             @data[i].Id
-                          </td>
-                        <td>@data[i].NameUser</td>
-                        <td>@data[i].IdDriver</td>
-                        <td>@data[i].StartTo</td>
-                        <td>@data[i].EndFrom</td>
-                        <td>@data[i].Date</td>
-                        <td>@data[i].Distance</td>
-                        <td>@data[i].Amount</td>
-                      
-                        <td><button class="btn btn-warning">Wait</button></td>
-                       
-                       
-                        <td>@data[i].Member</td>
-                        
-                        <td><input type="checkbox" name="Checkbook" id="@data[i].Id"></td>
-                    </tr>
+                        <tr>
+                           
+                            <td>@item.NameDriver</td>
+                            <td>@item.StartTo</td>
+                            <td>@item.EndFrom </td>
+                            <td>@item.Date</td>
+                            <td>@item.Distance km</td>
+                            <td>@String.Format(culture, "{0:N0}", item.Amount)VNĐ</td>
+                           
+
+                            @if (item.Status == 1)
+                            {
+                                <td><button class="btn btn-success" >Action</button></td>
+
+                            }
+                            else if (item.Status == 2)
+                            {
+                                <td><button class="btn btn-success" >Wait</button></td>
+                            }
+                           
+                            <td>@item.Member/@item.Seat</td>
+                            
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -123,4 +125,3 @@
     </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
-
