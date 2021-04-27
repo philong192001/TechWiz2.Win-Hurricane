@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "imahVdXhB06q+6x4oZSrUnwccydfi7qc+VOLMqYXnYewQ+U1kF0X495oUEwA1gIw7yM2U8nPq9qmxbSVv1Yf/A==",
+  "dgSpecHash": "Orx9iu60ROxS6TbX69PiwCjV+azibiSLp0SIkEDOej9vj03XcvqC52O6BtpLXtHnvLZHzvB88Z3QqN/7coDEMw==",
   "success": true,
   "projectFilePath": "D:\\winhurricance\\TechWiz2.Win-Hurricane\\WebApplication\\WebApplication\\WebApplication.csproj",
   "expectedPackageFiles": [
@@ -160,7 +160,9 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\THANH TU\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\THANH TU\\.nuget\\packages\\xunit.extensibility.core\\2.4.1\\xunit.extensibility.core.2.4.1.nupkg.sha512"
   ],
   "logs": []
 }

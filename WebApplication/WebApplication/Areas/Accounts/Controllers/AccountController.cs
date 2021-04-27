@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using WebApplication.Areas.Accounts.Models;
 using WebApplication.Models;
+using WebApplication.Services.Convertmd5;
 using WebApplication.Services.Mail;
 
 namespace WebApplication.Areas.Accounts.Controllers
@@ -16,10 +17,12 @@ namespace WebApplication.Areas.Accounts.Controllers
     {
         public MyDBContext _context;
         public IEmailSender _emailSender;
-        public AccountController(MyDBContext context, IEmailSender emailSender)
+        public IConvertmd5 _convertmd5;
+        public AccountController(MyDBContext context, IEmailSender emailSender, IConvertmd5 convertmd5)
         {
             _context = context;
             _emailSender = emailSender;
+            _convertmd5 = convertmd5;
         }
         [HttpGet]
         public IActionResult Login()
@@ -37,7 +40,7 @@ namespace WebApplication.Areas.Accounts.Controllers
                     // HttpContext.Session.Clear();
 
                     //var data = _context.Users.Where(a => a.Password.Equals(_encodeService.Decrypt(model.password)) && a.UserName.Equals(model.user_name)).FirstOrDefault(); 
-                    model.password = Convertmd5(model.password);
+                    model.password = _convertmd5.ConvertService(model.password);
                     var data = _context.Users.Where(a => a.UserName == model.user_name &&
                     a.Password == model.password).FirstOrDefault();
                     if (data != null)
@@ -82,7 +85,7 @@ namespace WebApplication.Areas.Accounts.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    model.password = Convertmd5(model.password);
+                    model.password = _convertmd5.ConvertService(model.password);
                     var data = _context.Users.Where(a => a.Password == model.password && a.UserName.Equals(model.user_name)).FirstOrDefault();
                     if (data == null)
                     {
@@ -123,21 +126,6 @@ namespace WebApplication.Areas.Accounts.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Account", new { area = "Accounts" });
         }
-        private string Convertmd5(string code)
-        {
-            MD5 mh = MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(code);
-            //mã hóa chuỗi đã chuyển
-            byte[] hash = mh.ComputeHash(inputBytes);
-            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
-            var sb = "";
-
-            for (int i = 0; i < hash.Length; i++)
-            {
-                sb += (hash[i].ToString("X2")).ToString();
-            }
-
-            return sb;
-        }
+       
     }
 }

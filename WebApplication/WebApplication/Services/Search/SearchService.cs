@@ -13,7 +13,7 @@ namespace WebApplication.Services.Search
         private MyDBContext _context;
 
 
-        public SearchService( MyDBContext context)
+        public SearchService(MyDBContext context)
         {
             _context = context;
         }
@@ -25,72 +25,82 @@ namespace WebApplication.Services.Search
         }
         public List<SuitableCarModelView> Search(SuitableCarModelView model)
         {
-            var data_1 = from st in _context.ShareTrip
-                         join b in _context.Booking on st.BookingId equals b.Id
-                         join d in _context.Driver on b.IdDriver equals d.Id
-                         join c in _context.Car on d.IdCar equals c.Id
-                         select new { st, b, d, c };
+            var query = _context.ShareTrip.ToList();
+            var query_1 = _context.Booking.ToList();
 
-            var data_2 = _context.ShareTrip.ToList();
-            var data_3 = _context.Booking.ToList();
+            var query_2 = from d in _context.Driver
+                          join c in _context.Car on d.IdCar equals c.Id
+                          select new { d, c };
+            var query_3 = _context.ShareBooking.ToList();
+            var query_4 = _context.Car.ToList();
 
-            List<SaveValue> data_4 = new List<SaveValue>();
+            var list = new List<SaveValue>();
+            var list_1 = new List<SaveValue>();
 
-            foreach (var item_1 in data_2)
-            {
-                var value_member = 0;
-                int? value_id = 0;
-                foreach (var item_2 in data_3)
-                {
-                    if (item_1.BookingId != null)
-                    {
-                        if (item_2.Id == item_1.BookingId)
-                        {
-                            value_member = value_member + item_2.Member;
-                            value_id = item_1.BookingId;
-                        }
-                    }
-                }
-                if (value_id != 0)
-                {
-                    data_4.Add(new SaveValue() { id = value_id, count = value_member });
-                }
-            }
-            //Số lương member của một chuyến
-            var result_1 = data_4;
-            List<SuitableCarModelView> data_6 = new List<SuitableCarModelView>();
-            foreach (var item_3 in result_1)
-            {
-                var data_5 = data_1.Select(x => new SuitableCarModelView()
-                {
-                    Id = item_3.id,
-                    address_from = x.b.EndFrom,
-                    address_to = x.st.FromTo,
-                    date = x.st.Date,
-                    member = Int32.Parse(x.c.Type) - item_3.count,
-                }).Where(x => x.Id == item_3.id).FirstOrDefault();
+            //foreach (var item in query)
+            //{
+            //    foreach (var item_1 in query_3)
+            //    {
+            //        var list_3 = new List<Booking>();
+            //        var value_1 = 0;
+            //        if (item_1.IdSharetrip == item.Id)
+            //        {
+            //            var data = query_1.Where(x => x.Id == item_1.BookingId).First();
+            //            list_3.Add(data);
+            //        }
+            //        foreach (var item_2 in list_3)
+            //        {
+            //            value_1 = value_1 + item_2.Member;
+            //        }
+            //        var date_1 = query.Where(x => x.Id == item_1.IdSharetrip).First();
+            //        var data_2 = query_2.Where(x => x.d.Id == date_1.DriverId).First();
+            //        //var data_3 = query_4.Where(x => x.Id == data_2.)
+            //        list.Add(new SaveValue() { id = item_1.IdSharetrip, menber = value_1, count = Int32.Parse(data_2.c.Type) - value_1 });
+            //    }
+            //}
+            //var sum = 0;
+            //foreach(var item_3 in lis`t)
+            //{
+            //    foreach(var item_4 in list)
+            //    {
+            //        if(item_3.id == item_4.id)
+            //        {
+                        
+            //        }
+            //    }
+            //}
+            //var data_3 = list;
 
-                data_6.Add(data_5);
-            };
-            
-            if(model.address_from != null)
-            {
-                data_6 = data_6.Where(x => x.address_from == model.address_from).ToList();
-            }
+            //foreach (var item_2 in list)
+            //{
+            //    var value_2 = query_2.Where(x=>x.d.Id == item_2.id).First();
+            //    item_2.count = Int16.Parse(value_2.c.Type) - item_2.menber;
+            //    list_1.Add(item_2);
+            //}
+
+            //var data = list;
             if (model.address_to != null)
             {
-                data_6 = data_6.Where(x => x.address_to == model.address_to).ToList();
+                query = query.Where(x => x.FromTo == model.address_to).ToList();
             }
-            if (model.date!= null)
+            if (model.address_from != null)
             {
-                data_6 = data_6.Where(x => x.date == model.date).ToList();
+                query = query.Where(x => x.StartTo == model.address_to).ToList();
             }
-            if (model.member != null)
+            if (model.date != null)
             {
-                data_6 = data_6.Where(x => x.member == model.member).ToList();
+                query = query.Where(x => x.Date == model.date).ToList();
             }
 
-            return data_6;
+
+
+            var data_1 = query.Select(x => new SuitableCarModelView()
+            {
+                address_from = x.FromTo,
+                date = x.Date,
+                address_to = x.StartTo,
+            }).ToList();
+            return data_1;
         }
     }
 }

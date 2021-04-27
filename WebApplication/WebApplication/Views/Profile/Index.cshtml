@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ShareTrip>
+@{ 
+    var key = 1;
+}
+<div class="container" style="margin-top:100px">
+    <div class="row">
+        <table class="table table-hover w-100">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">From To</th>
+                    <th scope="col">Start To</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@(key++)</th>
+                        <td>@item.FromTo</td>
+                        <td>@item.StartTo</td>
+                        <td>@item.Date</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="button" class="btn btn-danger">Left</button>
+                                <button type="button" class="btn btn-warning">Middle</button>
+                                <button type="button" class="btn btn-success">Right</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

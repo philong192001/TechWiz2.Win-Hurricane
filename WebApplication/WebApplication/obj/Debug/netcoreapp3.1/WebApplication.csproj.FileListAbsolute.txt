@@ -322,3 +322,7 @@ D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\
 D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\WebApplication.genruntimeconfig.cache
 D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\SuitableCarComponent\Default.cshtml.g.cs
 D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\ListBookingComponent\Default.cshtml.g.cs
+D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Index.cshtml.g.cs
+D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\History\Index.cshtml.g.cs
+D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+D:\winhurricance\TechWiz2.Win-Hurricane\WebApplication\WebApplication\bin\Debug\netcoreapp3.1\xunit.core.dll

@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.Models;
+using WebApplication.Services.Convertmd5;
 using WebApplication.Services.Mail;
 using WebApplication.Services.Search;
 
@@ -33,6 +34,7 @@ namespace WebApplication
             services.AddSingleton<MyDBContext>();
             services.AddTransient<IEmailSender, SendMailService > ();
             services.AddTransient<ISearchService, SearchService> ();
+            services.AddTransient<IConvertmd5, Convertmd5> ();
 
             services.AddSession(options =>
             {
