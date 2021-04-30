@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using WebApplication.Areas.Accounts.Controllers;
 using WebApplication.Models;
 using WebApplication.Models.Publish;
+using WebApplication.Services.Mail;
 using WebApplication.Services.Search;
 
 namespace WebApplication.Controllers
@@ -20,10 +21,11 @@ namespace WebApplication.Controllers
         private MyDBContext _context;
         private ISearchService _search_service;
         private readonly ILogger<HomeController> _logger;
-      
+        private IEmailSender _emailSender;
 
-        public HomeController(ILogger<HomeController> logger, MyDBContext context, ISearchService search_ervice)
+        public HomeController(ILogger<HomeController> logger, MyDBContext context, ISearchService search_ervice, IEmailSender emailSender)
         {
+            _emailSender = emailSender;
             _context = context;
             _logger = logger;
             _search_service = search_ervice;
@@ -66,6 +68,7 @@ namespace WebApplication.Controllers
                         _context.Booking.Add(data);
                         _context.SaveChanges();
                         ViewBag.SuccessfulAnnouncement = "Your request has been sent";
+                        //_emailSender.Seed("");
                         return RedirectToAction("Index");
 
                     }

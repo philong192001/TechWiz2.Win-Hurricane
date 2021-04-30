@@ -112,7 +112,7 @@
                                                                     <div class="col-sm-3">
                                                                         <div class="form-group has-icon has-label">
                                                                             <label for="formSearchUpDate">Member</label>
-                                                                            <input asp-for="@Model.menber" type="text" class="form-control" id="formSearchUpDate" placeholder="0/7">
+                                                                            <input asp-for="@Model.menber" type="text" class="form-control" id="formSearchUpDate" placeholder="0/16">
                                                                             <span class="form-control-icon"><i class="fa fa-user"></i></span>
                                                                             <span asp-validation-for="@Model.menber" class="text-danger"></span>
                                                                         </div>
@@ -124,9 +124,7 @@
                                                             <div class="row row-submit">
                                                                 <div class="container-fluid">
                                                                     <div class="inner">
-
-                                                                        <button type="submit" id="formSearchSubmit" class="btn btn-submit btn-theme pull-right">Find Car</button>
-
+                                                                        <button type="submit" id="formSearchSubmit" onclick="NotiSubmitBook()" class="btn btn-submit btn-theme pull-right">Book Car</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

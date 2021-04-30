@@ -38,7 +38,6 @@
 
                 swal({
                     title: "Success",
-                    
                     icon: "success",
                     timer: 9000
                 });
@@ -50,6 +49,13 @@
             }
 
         }
+    });  
+}
+function NotiSubmitBook() {
+    swal({
+
+        text: "Booking success ",
+        icon: "success",
     });
 }
    
